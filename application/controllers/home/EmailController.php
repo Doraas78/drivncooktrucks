@@ -31,7 +31,7 @@ class EmailController extends Controller
 
         $content="From: $name \n Email: $email \n Message: $message";
         $recipient = "drivncooktrucks@gmail.com";
-        $mailheader = "From: $email \r\n";
+        $mailheader = "From: Driv'N Cook Trucks <no-reply@drivncooktrucks.com> \r\n";
 
 
         mail($recipient, $subject, $content, $mailheader) or die("Error!");
