@@ -33,7 +33,6 @@ class EmailController extends Controller
         $recipient = "drivncooktrucks@gmail.com";
         $mailheader = "From: Driv'N Cook Trucks <no-reply@drivncooktrucks.com> \r\n";
 
-
         mail($recipient, $subject, $content, $mailheader) or die("Error!");
         echo json_encode(1);
 

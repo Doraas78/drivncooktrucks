@@ -757,7 +757,7 @@ $('#connection').ready(function () {
                 email: escapeHtml($('#connection #email').val()),
                 password: escapeHtml($('#connection #password').val()),
             },
-            ''
+            'json'
         )
         .fail(function (result, status) {
         })
@@ -765,6 +765,8 @@ $('#connection').ready(function () {
 
             $('#connection .btn_spinner_loading').remove();
             btn_connection_form.attr('disabled', false)
+
+            console.log(result)
 
             if (result === '0') { // if login wrong
                 $('.btn_spinner_loading').remove();

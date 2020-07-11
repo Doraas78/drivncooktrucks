@@ -23,11 +23,18 @@ class HomeController extends Controller
 
     public function signInAction()
     {
-        $this->render('home.signIn', 'template_empty' );
+        $this->data['cities'] = $this->getAllCity();
+        $this->render('home.signIn', 'template_empty' , $this->data);
     }
 
     public function aboutAction(){
         redirect('home', 'About', 'index');
+    }
+
+    public function getAllCity()
+    {
+        $cityModel = new CityModel();
+        return $cityModel->getCities();
     }
 
 

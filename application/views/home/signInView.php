@@ -19,7 +19,7 @@ $title = $lang['Inscription'] ?>
 
     <div class="row w-75">
         <div class="col">
-            <form id="signInForm" novalidate>
+            <form id="signInForm">
                 <div class="form-row">
                     <div class="form-group col-md">
                         <label for="email"><?php echo $lang['Email'] ?></label>
@@ -53,10 +53,29 @@ $title = $lang['Inscription'] ?>
                         <label for="street"><?php echo $lang['Rue']?></label>
                         <input type="text" class="form-control" id="street" name="street">
                     </div>
-                    <div class="form-group col list_city_col">
-                        <label for="city"><?php echo $lang['Ville']?></label>
-                        <input type="text" id="city" class="form-control choose_city" placeholder=<?php echo $lang['Selectionner votre ville...'] ?> name="city">
+
+                    <div id="" class="form-group col-md-3">
+                        <input list="citiesList" class="form-control validateOnDatalist" name="city" id="list" placeholder="Ville" value="">
+                        <datalist id="citiesList">
+                            <?php
+                            foreach ($cities as $city)
+                            {
+
+                                $oneCity = $city['name'] . ' (' . $city['zip_code'] . ')';
+                                ?>
+                                <option data-id="<?= $city['id'] ?>" data-value="<?= $oneCity?>"><?= $oneCity ?></option>
+
+                            <?php }
+
+                            ?>
+                        </datalist>
+                        <input type="hidden" id="cityInputHidden" class="hiddenVal" value="<?= $franchisee['city'] ?>">
                     </div>
+
+                    <!--<div class="form-group col list_city_col">
+                        <label for="city"><?php /*echo $lang['Ville']*/?></label>
+                        <input type="text" id="city" class="form-control choose_city" placeholder=<?php /*echo $lang['Selectionner votre ville...'] */?> name="city">
+                    </div>-->
 
                 </div>
 

@@ -301,6 +301,10 @@ jQuery.validator.addMethod("frenchCard", function (value, element) {
     return /^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$/.test(value);
 }, "Veuillez choisir un numéro de carte valable");
 
+jQuery.validator.addMethod("onDatalist", function (value, element) {
+    let hiddenVal = parseInt($(element).siblings('input.hiddenVal').val());
+    return !!(hiddenVal);
+}, "Veuillez selectionner une valeur correct");
 
 // SETTINGS
 jQuery.validator.setDefaults({
@@ -318,6 +322,11 @@ jQuery.validator.setDefaults({
     },
 });
 
+jQuery.validator.addClassRules(
+    "validateOnDatalist",
+    { onDatalist: true }
+);
+
 /******************************************
  *
  * MAIN
@@ -329,6 +338,24 @@ jQuery.validator.setDefaults({
 /* SIGN IN PAGE */
 
 $('#signIn').ready(function () {
+
+    let city_id = 0;
+
+    /* select the id of the city chosen */
+    $('input[list]').change(function(e) {
+
+        let cityInputHidden = $('#cityInputHidden');
+
+        let selectedOption = $("#citiesList option[data-value='" + escapeHtml($(this).val()) + "']");
+        let selectedCity = parseInt(selectedOption.attr('data-id'));
+
+        if (selectedCity) {
+            cityInputHidden.val(selectedCity);
+        } else {
+            cityInputHidden.val('');
+        }
+        city_id = cityInputHidden.val();
+    });
 
     // DATE
     let birthdayDate = $('#birthday_date');
@@ -388,14 +415,6 @@ $('#signIn').ready(function () {
                     return $.trim(value);
                 },
                 maxlength: 255
-            },
-
-            city: {
-                required: true,
-                requiredValidCity: true,
-                normalizer: function (value) {
-                    return $.trim(value);
-                }
             },
 
             first_name: {
@@ -463,7 +482,7 @@ $('#signIn').ready(function () {
                 number: escapeHtml($('#signIn #number').val()),
                 street: escapeHtml($('#signIn #street').val()),
                 type_of_road: escapeHtml($('#signIn #type_of_road').val()),
-                city: parseInt($('#signIn #city').attr('value')),
+                city:city_id,
                 date_creation: moment().format('YYYY-MM-DD HH:MM'),
                 newsletter: $('#newsletter').is(':checked'),
                 country: 'France',
@@ -471,23 +490,23 @@ $('#signIn').ready(function () {
             },
             'json'
         )
-            .fail(function (result, status) {
-                console.log(result)
-                console.log(status)
+        .fail(function (result, status) {
+            console.log(result)
+            console.log(status)
+            $('#signIn').prepend(alertError)
+        })
+        .done(function (result, status) {
+            if (result === '-1') {
                 $('#signIn').prepend(alertError)
-            })
-            .done(function (result, status) {
-                if (result === '-1') {
-                    $('#signIn').prepend(alertError)
-                } else if (result === '0') {
+            } else if (result === '0') {
 
-                    $('#signIn').prepend(alertErrorUserExist)
-                } else {
+                $('#signIn').prepend(alertErrorUserExist)
+            } else {
 
-                    window.location = url('user', 'Dashboard', 'index');
-                }
+                window.location = url('user', 'Dashboard', 'index');
+            }
 
-            })
+        })
     }
 })
 

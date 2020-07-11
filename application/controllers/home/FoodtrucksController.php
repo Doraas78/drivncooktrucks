@@ -15,9 +15,8 @@ class FoodtrucksController extends Controller
     {
         $this->getFoodTrucksFullAction();
         $this->data['active_foodtrucks'] = 1;
-        $this->render('home.foodtrucks', 'template', $this->data);
+        $this->render('home.foodTrucks', 'template', $this->data);
     }
-
     public function foodtruckstAction(){
         redirect('home', 'Foodtrucks', 'index');
     }
