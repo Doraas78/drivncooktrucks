@@ -1,0 +1,94 @@
+[Fri Jul 10 07:35:25.639191 2020] [mpm_event:notice] [pid 10706:tid 140527135942528] AH00489: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jul 10 07:35:25.639908 2020] [core:notice] [pid 10706:tid 140527135942528] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 07:37:32.675780 2020] [mpm_event:notice] [pid 10706:tid 140527135942528] AH00493: SIGUSR1 received.  Doing graceful restart
+[Fri Jul 10 07:37:32.691090 2020] [mpm_event:notice] [pid 10706:tid 140527135942528] AH00489: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jul 10 07:37:32.691114 2020] [core:notice] [pid 10706:tid 140527135942528] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 07:37:34.953580 2020] [mpm_event:notice] [pid 10706:tid 140527135942528] AH00491: caught SIGTERM, shutting down
+[Fri Jul 10 07:37:36.058334 2020] [mpm_prefork:notice] [pid 13021] AH00163: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jul 10 07:37:36.058445 2020] [core:notice] [pid 13021] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 07:37:37.504440 2020] [mpm_prefork:notice] [pid 13021] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 07:37:38.646530 2020] [mpm_prefork:notice] [pid 13120] AH00163: Apache/2.4.10 (Debian) configured -- resuming normal operations
+[Fri Jul 10 07:37:38.646581 2020] [core:notice] [pid 13120] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 07:38:18.687112 2020] [mpm_prefork:notice] [pid 13120] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 07:38:19.803656 2020] [mpm_prefork:notice] [pid 14714] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 07:38:19.803709 2020] [core:notice] [pid 14714] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 08:02:38.886664 2020] [:error] [pid 14722] [client 91.173.145.33:1934] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 08:02:40.741423 2020] [:error] [pid 14719] [client 91.173.145.33:1935] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 08:03:07.206415 2020] [:error] [pid 14829] [client 35.237.4.214:28284] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 08:03:12.706710 2020] [:error] [pid 14721] [client 88.124.130.130:4133] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 08:03:21.785335 2020] [:error] [pid 14719] [client 91.173.145.33:1939] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 08:03:24.580750 2020] [:error] [pid 14722] [client 88.124.130.130:4136] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 08:09:00.306841 2020] [mpm_prefork:notice] [pid 14714] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 08:09:01.193696 2020] [mpm_prefork:notice] [pid 15038] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 08:09:01.196186 2020] [core:notice] [pid 15038] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 08:09:07.371322 2020] [:error] [pid 15043] [client 88.124.130.130:4184] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 08:27:35.248003 2020] [mpm_prefork:notice] [pid 15038] AH00171: Graceful restart requested, doing restart
+[Fri Jul 10 08:27:35.405874 2020] [mpm_prefork:notice] [pid 15038] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 08:27:35.405921 2020] [core:notice] [pid 15038] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 08:29:49.531689 2020] [mpm_prefork:notice] [pid 15038] AH00171: Graceful restart requested, doing restart
+[Fri Jul 10 08:29:49.636934 2020] [mpm_prefork:notice] [pid 15038] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 08:29:49.636972 2020] [core:notice] [pid 15038] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 08:33:16.899650 2020] [:error] [pid 15377] [client 78.117.217.118:52515] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://51.254.124.156/
+[Fri Jul 10 08:33:21.869893 2020] [:error] [pid 15375] [client 78.117.217.118:52517] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://51.254.124.156/
+[Fri Jul 10 08:33:22.898378 2020] [:error] [pid 15374] [client 78.117.217.118:52523] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://51.254.124.156/
+[Fri Jul 10 08:34:33.815070 2020] [mpm_prefork:notice] [pid 15038] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 08:34:34.987917 2020] [mpm_prefork:notice] [pid 15489] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 08:34:34.988014 2020] [core:notice] [pid 15489] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 08:37:30.323160 2020] [mpm_prefork:notice] [pid 15489] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 08:37:31.439821 2020] [mpm_prefork:notice] [pid 15596] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 08:37:31.439876 2020] [core:notice] [pid 15596] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 09:13:00.091766 2020] [:error] [pid 15604] [client 78.117.217.118:54988] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://51.254.124.156/
+[Fri Jul 10 10:42:13.018037 2020] [:error] [pid 16734] [client 37.173.16.93:39636] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 10:42:30.405998 2020] [:error] [pid 15608] [client 37.173.16.93:39586] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 10:43:48.963619 2020] [:error] [pid 16734] [client 91.173.145.33:2954] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://www.drivncooktrucks.com/
+[Fri Jul 10 10:43:51.796666 2020] [:error] [pid 15604] [client 91.173.145.33:2955] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://www.drivncooktrucks.com/
+[Fri Jul 10 10:48:32.312714 2020] [:error] [pid 15601] [client 89.156.104.190:60074] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://51.254.124.156/
+[Fri Jul 10 10:53:11.335791 2020] [:error] [pid 15603] [client 91.173.145.33:3049] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 14:55:22.919091 2020] [:error] [pid 15602] [client 123.30.136.234:35964] script '/var/www/html/wp-login.php' not found or unable to stat
+[Fri Jul 10 15:03:18.281352 2020] [:error] [pid 15604] [client 93.113.111.193:39908] script '/var/www/html/wp-login.php' not found or unable to stat
+[Fri Jul 10 16:07:32.032599 2020] [:error] [pid 15600] [client 88.124.130.130:6320] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:07:34.259728 2020] [:error] [pid 19217] [client 88.124.130.130:6321] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:12:51.203123 2020] [:error] [pid 19216] [client 88.124.130.130:6352] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:13:46.528918 2020] [:error] [pid 15600] [client 88.124.130.130:6357] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:13:48.541285 2020] [:error] [pid 15602] [client 88.124.130.130:6358] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:13:50.569524 2020] [:error] [pid 19217] [client 88.124.130.130:6359] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:13:51.753283 2020] [:error] [pid 19219] [client 88.124.130.130:6360] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:13:53.264998 2020] [:error] [pid 19216] [client 88.124.130.130:6361] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:14:01.881938 2020] [:error] [pid 19218] [client 88.124.130.130:6362] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:14:03.871787 2020] [:error] [pid 19220] [client 88.124.130.130:6364] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:14:23.072109 2020] [:error] [pid 19219] [client 91.173.145.33:8821] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://www.drivncooktrucks.com/
+[Fri Jul 10 16:14:27.248588 2020] [:error] [pid 15602] [client 91.173.145.33:8823] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://www.drivncooktrucks.com/
+[Fri Jul 10 16:14:29.726800 2020] [:error] [pid 15603] [client 91.173.145.33:8825] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://www.drivncooktrucks.com/
+[Fri Jul 10 16:21:36.043751 2020] [:error] [pid 15600] [client 82.64.114.45:58105] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:21:36.252585 2020] [:error] [pid 19216] [client 88.124.130.130:6471] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:21:51.076144 2020] [:error] [pid 19218] [client 82.64.114.45:58107] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:25:32.065025 2020] [:error] [pid 18492] [client 88.124.130.130:6480] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:26:15.539192 2020] [:error] [pid 15602] [client 88.124.130.130:6493] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:28:57.600748 2020] [:error] [pid 19216] [client 88.124.130.130:6497] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:29:08.621483 2020] [:error] [pid 15603] [client 88.124.130.130:6500] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:29:26.189273 2020] [:error] [pid 19216] [client 82.64.114.45:58140] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:43:03.098192 2020] [:error] [pid 19219] [client 88.124.130.130:6521] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36, referer: http://drivncooktrucks.com/
+[Fri Jul 10 16:43:27.714450 2020] [:error] [pid 19216] [client 88.124.130.130:6524] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:43:32.554170 2020] [:error] [pid 15603] [client 88.124.130.130:6525] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 16:48:54.603285 2020] [mpm_prefork:notice] [pid 15596] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 16:48:55.511769 2020] [mpm_prefork:notice] [pid 31376] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 16:48:55.511854 2020] [core:notice] [pid 31376] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 16:50:52.934141 2020] [mpm_prefork:notice] [pid 31376] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 16:50:54.067013 2020] [mpm_prefork:notice] [pid 32197] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 16:50:54.067100 2020] [core:notice] [pid 32197] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 16:54:34.867650 2020] [mpm_prefork:notice] [pid 32197] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 16:54:35.941837 2020] [ssl:warn] [pid 1234] AH01909: vps813492.ovh.net:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Jul 10 16:54:35.996266 2020] [ssl:warn] [pid 1235] AH01909: vps813492.ovh.net:443:0 server certificate does NOT include an ID which matches the server name
+[Fri Jul 10 16:54:35.998905 2020] [mpm_prefork:notice] [pid 1235] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 16:54:35.998942 2020] [core:notice] [pid 1235] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 16:55:05.798921 2020] [mpm_prefork:notice] [pid 1235] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 16:55:06.923261 2020] [mpm_prefork:notice] [pid 1503] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 16:55:06.923321 2020] [core:notice] [pid 1503] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 16:56:12.267682 2020] [mpm_prefork:notice] [pid 1503] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 16:56:13.398765 2020] [mpm_prefork:notice] [pid 1988] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 16:56:13.398827 2020] [core:notice] [pid 1988] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 17:09:16.911722 2020] [mpm_prefork:notice] [pid 1988] AH00169: caught SIGTERM, shutting down
+[Fri Jul 10 17:09:18.041770 2020] [mpm_prefork:notice] [pid 14394] AH00163: Apache/2.4.10 (Debian) OpenSSL/1.0.1t configured -- resuming normal operations
+[Fri Jul 10 17:09:18.041832 2020] [core:notice] [pid 14394] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jul 10 17:09:42.792139 2020] [:error] [pid 14399] [client 91.160.145.87:31669] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 36
+[Fri Jul 10 17:30:32.852949 2020] [:error] [pid 14402] [client 88.124.130.130:6608] PHP Fatal error:  Default value for parameters with a class type hint can only be NULL in /var/www/html/back_office_drivncooktrucks/framework/database/DatabaseManager.php on line 50, referer: http://drivncooktrucks.com/

@@ -1,0 +1,218 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 10722,
+      "max": [
+        33.730701446533203,
+        28.266000747680664,
+        64.036697387695312
+      ],
+      "min": [
+        -2.9196999073028564,
+        -8.3843002319335938,
+        18.755699157714844
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 128664,
+      "componentType": 5126,
+      "count": 10722,
+      "max": [
+        0.99878412485122681,
+        1,
+        0.99878412485122681
+      ],
+      "min": [
+        -0.99877911806106567,
+        -1,
+        -0.99877911806106567
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 64320,
+      "max": [
+        10721
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 257328,
+      "componentType": 5126,
+      "count": 10722,
+      "max": [
+        74.500801086425781,
+        7.952700138092041,
+        55.893501281738281
+      ],
+      "min": [
+        23.576299667358398,
+        -35.192501068115234,
+        18.576799392700195
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 385992,
+      "componentType": 5126,
+      "count": 10722,
+      "max": [
+        0.99878412485122681,
+        1,
+        0.99878412485122681
+      ],
+      "min": [
+        -0.99877911806106567,
+        -1,
+        -0.99877911806106567
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 257280,
+      "componentType": 5125,
+      "count": 64320,
+      "max": [
+        10721
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "onlmee (https://sketchfab.com/onlmee)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/glass-60108826c7464d29b90d520c36b9bbbd",
+      "title": "Glass"
+    },
+    "generator": "Sketchfab-7.75.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 514560,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 514656,
+      "byteOffset": 514560,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1029216,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "wire_213154229",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.17854420731707318,
+          0.17854420731707318,
+          0.17854420731707318,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3,
+        4
+      ],
+      "name": "glass.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": ""
+    },
+    {
+      "mesh": 1,
+      "name": ""
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+

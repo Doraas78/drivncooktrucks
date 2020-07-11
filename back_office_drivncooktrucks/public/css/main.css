@@ -1,0 +1,875 @@
+/* GENERAL */
+
+
+@font-face {
+    font-family: "Comfortaa";
+    src: url("../fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf")
+}
+
+@font-face {
+    font-family: "Comfortaa-Bold";
+    src: url("../fonts/Comfortaa/static/Comfortaa-Bold.ttf")
+}
+
+
+
+* {
+    font-family: Comfortaa, serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+    border: none;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+html, body{
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing : border-box;
+}
+
+a {
+    color: unset;
+}
+
+a:hover {
+    color: unset;
+}
+
+li {
+    margin: 0;
+}
+
+.icon_download{
+    transform: scale(3,3);
+    margin-top: 25px;
+}
+
+.title {
+    color: #024C6E;
+    font-family: "Comfortaa-Bold", sans-serif;
+    size: 10px;
+}
+
+/* SHOW MESSAGE SUCCESS / ERROR / ALERT */
+
+.data_save_success_message{
+    font-family: "Comfortaa-Bold", sans-serif;
+    color: darkgreen;
+    font-size: 13px;
+    padding: 5px;
+}
+
+.alert_custom {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* TABLE */
+
+table .button_edit {
+    background-color: darkblue;
+    border: none;
+}
+
+table .button_delete {
+    background-color: darkred;
+    border: none;
+}
+
+
+/* PREVIOUS PAGE BUTTON */
+
+.previous_page {
+    font-family: Comfortaa, serif;
+    text-align: left;
+    width: 160px;
+    height: 60px;
+    color: white;
+    border-radius: 12px;
+    padding-left: 15px;
+    border: none;
+}
+
+.previous_page .flech {
+    height: 25px;
+    padding-left: 15px;
+}
+
+.previous_page:hover {
+   opacity: 0.6;
+}
+
+/* PAGINATION */
+
+.navigation_pages_block {
+    margin-right: 15px;
+}
+
+.current_page_index {
+    background-color: rgb(104, 167, 193);
+    color: white;
+    border: 1px solid rgb(104, 167, 193);
+}
+
+
+.paginationjs .paginationjs-pages {
+    float: right;
+}
+
+.paginationjs .paginationjs-pages ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+/* SEARCH BAR */
+
+.site_search, .site_search:focus {
+    font-weight: bold;
+    background-color: rgb(210, 217, 222);
+    border: 2px solid rgba(210, 217, 222, 0.84);
+    padding: 20px;
+    font-family: Comfortaa, serif;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 40px;
+    outline: unset;
+    box-shadow: unset;
+}
+
+.search_button {
+    height: 44px;
+    size: 44px;
+}
+
+/* FILTER */
+
+.filter_order_column, .filter_order_column:hover, .filter_order_column:focus {
+    background-color: unset;
+    border: none;
+    color: #024C6E;
+    font-family: "Comfortaa-Bold", sans-serif;
+    font-size: 25px;
+    box-shadow: none;
+}
+
+/* HEADER */
+
+#header-image {
+    position: absolute;
+    top: 0;
+    left: 2%;
+    z-index: 20;
+}
+
+#dashboard {
+    position: relative;
+    text-align: center;
+}
+
+#franchiseesManagement {
+    position: relative;
+    text-align: center;
+}
+
+#trucksManagement {
+    position: relative;
+    text-align: center;
+}
+
+#myFoodTruck {
+    position: relative;
+    text-align: center;
+}
+
+#purchaseManagement {
+    position: relative;
+    text-align: center;
+}
+
+
+#events {
+    position: relative;
+    text-align: center;
+}
+
+#errorPage {
+    position: relative;
+    text-align: center;
+}
+
+/* FRANCHISEE MANAGEMENT */
+
+#franchiseesManagementBackground {
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/franchisee.jpg");
+    background-size: 100%;
+    position: absolute;
+    opacity:0.15;
+    background-color: #F9F6F8;
+}
+
+#franchiseesManagement .active-cyan-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+}
+
+#franchiseesManagement .active-cyan input[type=text] {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+}
+#franchiseesManagement .active-cyan .fa, #franchiseesManagement .active-cyan-2 .fa {
+    color: #4dd0e1;
+}
+
+#franchiseesManagement .header_title {
+    height: 150px;
+}
+
+#franchiseesManagement .search_box {
+    width: 50%;
+    display: flex;
+    margin: auto;
+}
+
+#franchiseesManagement .info_title {
+    color: #024C6E;
+    font-family: "Comfortaa-Bold", sans-serif;
+    font-size: 25px;
+}
+
+#franchiseesManagement .infos_owner  {
+    background-color: #024C6E;
+}
+
+#franchiseesManagement .infos_foodtruck {
+    background-color: #016996;
+}
+
+#franchiseesManagement .infos_date {
+    background-color:  rgb(104, 167, 193);
+}
+
+#franchiseesManagement .infos_number {
+    background-color:  rgb(152, 183, 196);
+}
+
+#franchiseesManagement .infos_statut {
+    background-color: #CBDBDC;
+}
+
+#franchiseesManagement .previous_page {
+    background-color: #016996;
+}
+
+#franchiseesManagement th {
+   border: none;
+}
+
+#franchiseesManagement table {
+    margin-bottom: 50px;
+}
+
+/* PAGE CONNECTION & PROFIL */
+
+#connection, #profil {
+    height: 100vh;
+    padding: 0;
+    color: #244C66;
+}
+
+#connection .top_row, #connection .foot_row, #profil  .top_row,  #profil  .foot_row{
+    height: 5%;
+    margin: 0;
+    padding: 0;
+
+}
+
+#connection .main_row, #profil .main_row {
+    height: 60%;
+    padding: 0;
+    margin: 0;
+}
+
+#connection .background-image, #profil .background-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+#connection .col_top,  #connection .col_foot, #profil .col_foot, #profil .col_top {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#connection .main_login, #profil .main_login {
+    background-color:   #CBDBDC;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#connection .main_left, #profil .main_left {
+    background-color: #CBDBDC;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#connection #col_form, #profil #col_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#connection #col_form button {
+    background-color: #97b7c5;
+    color: #244C66;
+}
+
+#connection #col_form form {
+    width: 80%;
+}
+
+#connection #col_form h1{
+    margin-bottom: 30px;
+    color: #0c5460;
+    font-family: "Comfortaa-Bold", sans-serif;
+}
+
+#connection #col_form form .form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#connection #col_form form input{
+    width: 40%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #D11F29;
+    border-right: 3px solid #D11F29;
+    border-left: 3px solid #D11F29;
+}
+
+#connection #col_form form input:focus {
+    box-shadow: none; /* reset css bootstrap */
+}
+
+#connection #col_form form button {
+    margin-top: 30px;
+    background-color: #97b7c5	;
+    border: none;
+    color: #024C6E;
+    height: 70px;
+    width: 140px;
+}
+#connection #col_form form button:focus {
+    box-shadow: none;
+}
+
+#connection #col_form form button:hover {
+    background-color: #6a98ac;
+}
+
+#connection #logo2 {
+    height: 100%;
+    width: auto;
+}
+
+#connection .forget-password {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background-color: #FFC857;
+}
+
+#connection .forget-password:focus {
+    box-shadow: none;
+}
+
+#connection .forget-password:hover {
+    background-color: #ffb213;
+}
+
+/* PROFIL */
+
+#profil .main_row {
+    background-color: #C4D6DE;
+    height: 95%;
+}
+
+#profil .img_profil{
+    height: 100%;
+}
+
+#profil .img_profil_container {
+    height: 60%;
+    padding: 10px;
+}
+
+#profil .button_pages button{
+    background-color: #97b7c5;
+    color: black;
+    width: 60%;
+    border: none;
+}
+
+#profil .button_pages button{
+    background-color: #97b7c5;
+    color: black;
+    width: 60%;
+    border: none;
+}
+
+#profil .form_group label{
+    font-family: "Comfortaa", sans-serif;
+}
+
+#profil .form_group input{
+    background-color: unset;
+    border-bottom: 1px solid red;
+}
+
+#profil .infos_container {
+    color: darkblue;
+}
+
+/* DASHBOARD PAGE */
+
+#dashboardBackground {
+    height: 100%;
+    width: 100%;
+    background-size: 100%;
+    opacity:0.30;
+    position:absolute;
+    background-image: url("../images/dashboard_background.jpg");
+
+}
+
+#dashboard .title span {
+    color: red;
+}
+
+#dashboard .title1 {
+    color: black;
+    font-family: "Comfortaa-Bold", serif;
+}
+
+#dashboard .header_title {
+    height: 120px;
+}
+
+#dashboard .logout {
+    opacity: 0.4;
+    color: black;
+}
+
+#dashboard .logout:hover {
+    color: #595959;
+}
+
+#dashboard .button {
+    color: black;
+    font-family: "Comfortaa-Bold", serif;
+    text-align: center;
+    font-size: 16px;
+    width: 250px;
+    height: 70px;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+#dashboard .button1 {
+    background-color: #acaaa9
+}
+
+#dashboard .button1:hover {
+    opacity: 0.6;
+}
+
+#dashboard .button2 {
+    background-color: #FFC857;
+}
+
+#dashboard .button2:hover {
+    opacity: 0.6;
+}
+
+#dashboard .button3 {
+    background-color: #016996
+}
+
+#dashboard .button3:hover {
+    opacity: 0.6;
+}
+
+#dashboard .button4 {
+    background-color: #F8CBAD
+}
+
+#dashboard .button4:hover {
+    opacity: 0.6;
+}
+
+#dashboard .button5 {
+    background-color: #FE7E4D
+}
+
+#dashboard .button5:hover {
+    opacity: 0.6;
+}
+
+#dashboard .button6 {
+    background-color: #97b7c5
+}
+
+#dashboard .button6:hover {
+    opacity: 0.6;
+}
+
+#dashboard .button7 {
+    background-color: #AF7050
+}
+
+#dashboard .button7:hover {
+    opacity: 0.6;
+}
+
+#dashboard .limit {
+    width: 95%;
+    border-color: #FE7E4D;
+}
+
+#dashboard .all_events_col tr h1 {
+    font-size: 32px;
+    color: black;
+    font-family: "Comfortaa-Bold", sans-serif;
+}
+
+
+#dashboard .all_events_container {
+    border-radius: 20px;
+}
+
+#dashboard .all_events_container tr {
+    background-color: #e4606d;
+    border-bottom: 2px solid white;
+}
+
+#dashboard .all_events_container table {
+    margin: 0;
+}
+
+#dashboard .all_events_container table img {
+    height: 100px;
+    width: 100px;
+}
+
+
+/* TRUCKS MANAGEMENT */
+
+#trucksManagementBackground {
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/food_truck_4.jpg");
+    background-size: 100%;
+    position: absolute;
+    opacity:0.15;
+}
+
+#trucksManagement .header_title {
+    height: 150px;
+}
+
+
+#trucksManagement .previous_page {
+    background-color: #FE7E4D;
+}
+
+
+#trucksManagement .title {
+    color: #024C6E;
+}
+
+#trucksManagement .infos_owner  {
+    background-color: #FE7E4D;
+}
+
+#trucksManagement .infos_immatriculation  {
+    background-color: rgb(253, 144, 73);
+}
+
+#trucksManagement .infos_location  {
+    background-color: rgb(253, 166, 75);
+}
+
+#trucksManagement .infos_availibilty  {
+    background-color: rgb(253, 183, 76);
+}
+
+#trucksManagement .infos_maintenance  {
+    background-color: rgb(254, 217, 98);
+}
+
+#trucksManagement .infos_truck  {
+    background-color: rgb(254, 222, 80);
+}
+
+#trucksManagement .info_title {
+    color: #024C6E;
+    font-family: "Comfortaa-Bold", serif;
+    font-size: 25px;
+}
+
+#trucksManagement th  {
+    text-align: center;
+}
+
+#trucksManagement th form {
+    margin: 0;
+}
+
+#trucksManagement .director_info {
+    background-color: unset;
+    color: black;
+    font-weight: bold;
+}
+
+
+#trucksManagement .director_info:hover,  #trucksManagement .director_info:active, #trucksManagement .director_info:focus{
+    box-shadow: none;
+    color: brown;
+}
+
+
+    /* PURCHASE MANAGEMENT */
+
+#purchaseManagementBackground {
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/money_pig.jpg");
+    background-size: 100%;
+    position: absolute;
+    opacity:0.15;
+}
+
+#purchaseManagement .previous_page{
+    background-color: #FE7E4D;
+}
+
+#purchaseManagement .header_title{
+    height: 150px;
+}
+
+
+#purchaseManagement table{
+    background-color: #CBDBDC;
+    border-radius: 8px;
+    opacity: 0.7;
+    width: 90%;
+}
+
+#purchaseManagement .info_title {
+    color: #024C6E;
+    font-family: "Comfortaa-Bold", sans-serif;
+    font-size: 25px;
+}
+
+#myFoodTruckBackground {
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/my_foodtruck_page.jpg");
+    background-size: 100%;
+    position: absolute;
+    opacity:0.15;
+}
+
+#myFoodTruck .header_title{
+    height: 150px;
+}
+
+#myFoodTruck .previous_page{
+    background-color: #ffcf0f;
+}
+
+#myFoodTruck .button {
+    background-color: #CBDBDC;
+    color: black;
+    font-family: "Comfortaa-Bold", serif;
+    font-size: 16px;
+    width: 220px;
+    height: 50px;
+    border-radius: 12px;
+}
+
+#myFoodTruck .button:hover {
+    background-color: #ffbc40;
+}
+
+#myFoodTruck .button:focus {
+    background-color: #ffa600;
+}
+
+#myFoodTruck .search_factory {
+    background-color: #CBDBDC;
+    border-radius: 12px;
+    height: 80px;
+    width: 95%;
+}
+
+#myFoodTruck .search_factory button {
+    background-color: #294f95;
+}
+
+#myFoodTruck table{
+    background-color: #CBDBDC;
+    border-radius: 8px;
+    opacity: 0.7;
+    width: 90%;
+}
+
+#myFoodTruck .info_title {
+    color: #024C6E;
+    font-family: "Comfortaa-Bold", sans-serif;
+    font-size: 25px;
+}
+
+#myFoodTruck .button_warehouse {
+    background-color: #b9132c;
+    font-family: "Comfortaa-Bold", sans-serif;
+}
+
+#myFoodTruck .button_add_action {
+    background-color: #d9863a;
+    font-family: "Comfortaa-Bold", sans-serif;
+}
+
+/* EVENTS */
+
+#eventsBackground {
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/events_background.jpg");
+    background-size: 100%;
+    position: absolute;
+    opacity:0.15;
+}
+
+#events .header_title{
+    height: 150px;
+}
+
+#events .previous_page{
+    background-color: #024C6E;
+}
+
+#events .events_container {
+    border-radius: 15px;
+    padding: 20px;
+}
+
+#events .events_container h1 {
+    color: #0c5460;
+    font-family: "Comfortaa-Bold", sans-serif;
+    font-size: 28px;
+}
+
+
+#events .all_events_container {
+    background-color: #F8CBAD;
+}
+
+
+#events .events_to_validate {
+    background-color: #CBDBDC;
+}
+
+#events .footer_events {
+    height: 100px;
+}
+
+#events .footer_events button{
+    background-color: #024C6E;
+    height: 50px;
+}
+
+#events .footer_events button{
+    background-color: #024C6E;
+    height: 50px;
+}
+
+#events .events_container tr:hover {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#modal_add_event .modal-title {
+    color:  #0c5460;
+}
+
+#modal_add_event .modal-body {
+    padding: 50px 50px 10px 50px;
+}
+
+#modal_add_event input:focus, #modal_add_event textarea:focus, #modal_add_event label.custom-file-label:focus {
+    box-shadow: none;
+    border: 2px solid #0c5460;
+}
+#modal_add_event #label_picture:hover {
+    color: #0c5460;
+    font-weight: bold;
+}
+
+#modal_add_event #picture_container {
+    margin-top: 50px;
+}
+
+#modal_add_event #description_container {
+    margin-top: 50px;
+}
+
+#modal_add_event #description {
+    background-color: antiquewhite;
+}
+
+
+/* FRANCHISEE DETAILS */
+#franchiseeDetails .previous_page {
+    background-color:    #F8CBAD;
+}
+#franchiseeDetails .franchisee_truck_info {
+    background-color:    #F8CBAD;
+    border-radius: 10px;
+
+}

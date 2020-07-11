@@ -1,0 +1,651 @@
+/* GENERAL */
+
+@font-face {
+    font-family: "Comfortaa";
+    src: url("../fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf")
+}
+
+@font-face {
+    font-family: "Comfortaa-Bold";
+    src: url("../fonts/Comfortaa/static/Comfortaa-Bold.ttf")
+}
+
+@font-face {
+    font-family: "AbrilFatface-Regular";
+    src: url("../fonts/Abril_Fatface/AbrilFatface-Regular.ttf");
+}
+
+* {
+    font-family: Comfortaa, serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+html, body{
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing : border-box;
+}
+p {
+    font-family: "Courier New", Comfortaa, serif;
+}
+
+span{
+    font-family: inherit;
+}
+
+a {
+color: unset;
+}
+
+a:hover {
+color: unset;
+}
+
+li {
+margin: 0;
+}
+
+.title {
+color: black;
+font-family: "Comfortaa-Bold", sans-serif;
+size: 10px;
+}
+
+.form-control:focus{
+    box-shadow: none;
+}
+
+/* BUTTON */
+
+
+button:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+button {
+    outline: none;
+    border: none;
+    font-family: Georgia, Comfortaa, serif;
+    box-shadow: none;
+}
+
+.btn{
+    box-shadow: none;
+}
+
+.btn:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.font_btn_sizing {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    justify-content: center;
+}
+
+.btn_orange{
+    background-color: #FFC857;
+}
+
+.btn_dark_blue{
+    background-color: #F8CBAD;
+}
+
+.btn_inherit{
+    background-color: inherit;
+}
+
+/* CITY LIST UL */
+
+.city_list_ul {
+    max-height: 100px;
+    overflow-x: hidden;
+    width: inherit;
+    z-index: 1;
+    position: absolute;
+    overflow-y: scroll;
+}
+
+.city_list_ul li {
+    font-size: small;
+    height: 60px;
+    position: relative;
+}
+
+.city_list_ul li:hover {
+    background-color: #e4606d;
+    cursor: pointer;
+}
+
+/* SHOW MESSAGE SUCCESS / ERROR / ALERT */
+
+.data_save_success_message{
+    font-family: "Comfortaa-Bold", sans-serif;
+    color: darkgreen;
+    font-size: 13px;
+    padding: 5px;
+}
+
+.alert_custom {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* TABLE */
+
+table .button_edit {
+    background-color: darkblue;
+    border: none;
+}
+
+table .button_delete {
+    background-color: darkred;
+    border: none;
+}
+
+
+/* PREVIOUS PAGE BUTTON */
+
+.previous_page {
+    font-family: Comfortaa, serif;
+    text-align: left;
+    width: 160px;
+    height: 60px;
+    color: white;
+    border-radius: 12px;
+    padding-left: 15px;
+    border: none;
+}
+
+.previous_page .flech {
+    height: 25px;
+    padding-left: 15px;
+}
+
+.previous_page:hover {
+   opacity: 0.6;
+}
+
+/* PAGINATION */
+
+.navigation_pages_block {
+    margin-right: 15px;
+}
+
+.current_page_index {
+    background-color: rgb(104, 167, 193);
+    color: white;
+    border: 1px solid rgb(104, 167, 193);
+}
+
+
+.paginationjs .paginationjs-pages {
+    float: right;
+}
+
+.paginationjs .paginationjs-pages ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+/* SEARCH BAR */
+
+.site_search, .site_search:focus {
+    font-weight: bold;
+    background-color: rgb(210, 217, 222);
+    border: 2px solid rgba(210, 217, 222, 0.84);
+    padding: 20px;
+    font-family: Comfortaa, serif;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 40px;
+    outline: unset;
+    box-shadow: unset;
+}
+
+.search_button {
+    height: 44px;
+    size: 44px;
+}
+
+/* FILTER */
+
+.filter_order_column, .filter_order_column:hover, .filter_order_column:focus {
+    background-color: unset;
+    border: none;
+    color: #024C6E;
+    font-family: "Comfortaa-Bold", sans-serif;
+    font-size: 25px;
+    box-shadow: none;
+}
+
+
+/* NAVBAR */
+
+#navbar_user {
+    border-bottom: 2px solid #FE7E4D ;
+}
+
+/*  WELCOME  */
+
+#footer {
+    height: 50px;
+    color: black;
+    background-color: #AFB7BB;
+    opacity: 0.9;
+}
+
+#footer i {
+    font-size: 30px;
+}
+
+#home .background {
+    background-image: url("../images/homepage_slide.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    font-family: AbrilFatface-Regular, serif;
+
+}
+
+#home #slogan1 {
+    font-family: AbrilFatface-Regular, sans-serif;
+    font-size: 45px;
+}
+
+#home #slogan2{
+    font-family: AbrilFatface-Regular, sans-serif;
+    font-style: italic;
+}
+
+#home #rightSide{
+    padding-left: 15%;
+}
+
+#home #containerHome{
+    margin-bottom: 69px;
+}
+
+/* ABOUT */
+
+#about .background {
+    background-image: url("../images/about_us.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #FFD23F;
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+#about #banneer{
+    background: rgba(161,183,210,0.25);
+
+}
+
+#about #contactUs{
+    background-image: url("../images/ice_cream.jpg");
+    opacity: 0.8;
+    color: white;
+    border-radius: 0;
+    width: 100%;
+}
+
+#about #button_modal{
+    background-color: #FFD23F;
+    border-color: #FFD23F ;
+    color: black;
+
+
+}
+#about #modal_success_message_send{
+    background-color: #D8B8DF;
+    color: black;
+    border-radius: 30px;
+    height: 300px;
+    width: 500px;
+    opacity: 1;
+    top: 0;
+    position: absolute;
+    font-weight: bold ;
+
+}
+
+#about #modal_error_message_send{
+    background-color: #FA8886;
+    color:  white;
+    border-radius: 30px;
+    height: 300px;
+    width: 500px;
+    opacity: 1;
+    top: 0;
+    position: absolute;
+    font-weight: bold ;
+}
+
+#about .picture{
+    border-radius:0;
+}
+
+#about #eventsPic{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+
+}
+
+#about{
+    margin-bottom: 68px;
+}
+
+.map-responsive {
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    padding-right: 0;
+}
+
+.map-responsive iframe {
+    left:0;
+    top:0;
+    height:60%;
+    width:50%;
+    position:absolute;
+
+}
+
+/* OUR FOODTRUCKS */
+
+#foodtrucks .background {
+    background-image: url("../images/map.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+    text-align: center;
+    font-family: AbrilFatface-Regular, serif;
+
+}
+
+
+
+#foodtrucks #slogan2{
+    font-family: AbrilFatface-Regular, sans-serif;
+    color: #362B1C;
+}
+
+#foodtrucks #rightSide{
+    padding: 5%;
+    margin: 5%;
+}
+
+
+#foodtrucks #containerFoodtruck{
+    margin-bottom: 69px;
+}
+
+/* SIGN IN */
+
+#backgroundSignIn{
+    width:100%;
+    background-image: url("../images/food_truck_5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(5px);
+}
+
+#signIn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+#signIn form {
+    border-radius: 5px;
+    background-color: rgba(250, 189, 148, 0.8);
+    border: 3px solid rgb(250, 189, 148);
+    padding: 50px;
+}
+
+#signIn .form-control{
+    background-color: unset;
+    border: none;
+    border-bottom: 2px solid blanchedalmond;
+}
+
+#signIn #btn_conditions{
+    background-color: unset;
+    border: unset;
+    color: inherit;
+}
+
+/*  CONNECTION  */
+
+#connection {
+    background-color: #CBDBDC;
+}
+
+#connection .btn_forgot_password {
+    background-color: unset;
+    color: currentColor;
+    border: none;
+    box-shadow: none;
+
+}
+
+/* DASHBOARD USER */
+
+#dashboard .my_orders_section {
+    border-radius: 20px;
+}
+
+#dashboard .my_orders_section tr {
+    background-color: #e4606d;
+    border-bottom: 2px solid white;
+}
+
+#dashboard .my_orders_section table {
+    margin: 0;
+}
+
+#dashboard .my_orders_section table img {
+    height: 100px;
+    width: 100px;
+}
+
+#dashboard .my_notications_section {
+   background-color: #97b7c5;
+    border-radius: 5px;
+}
+
+/* ORDER */
+
+#order_truck_list .trucks_table {
+    border-radius: 12px;
+}
+
+#order_truck_list .trucks_table tr{
+    background-color:  #FFC857 	;
+    border-bottom: 2px solid white;
+}
+
+#order_truck_list .trucks_table table {
+    margin: 0;
+}
+
+#order_truck_list .trucks_table table img {
+    height: 100px;
+    width: 100px;
+}
+
+#order_truck_list .table_cell_button_order {
+
+}
+
+/* ORDER MEALS */
+
+#order_meal_list .meals_table {
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+#order_meal_list .meals_table input.quantity {
+    width: 70px;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: 35px;
+    background-color: unset;
+}
+
+#order_meal_list .quantity_meal_order {
+    margin-left: 30px;
+}
+
+/* ORDER MENUS */
+
+#order_menu_list .menus_table {
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+#order_menu_list .menus_table input.quantity {
+    width: 70px;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: 35px;
+    background-color: unset;
+}
+
+#order_menu_list .quantity_menu_order {
+    margin-left: 30px;
+    width: 20%;
+}
+
+/* ORDER INGREDIENT */
+
+#order_ingredient_list .ingredients_table {
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+#order_ingredient_list .ingredients_table input.quantity {
+    width: 70px;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: 35px;
+    background-color: unset;
+}
+
+#order_ingredient_list .quantity_ingredient_order {
+    margin-left: 30px;
+    width: 20%;
+}
+
+
+/* ORDER DRINKS */
+
+#order_drink_list .drinks_table {
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+#order_drink_list .drinks_table input.quantity {
+    width: 70px;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    height: 35px;
+    background-color: unset;
+}
+
+#order_drink_list .quantity_drink_order {
+    margin-left: 30px;
+    width: 20%;
+}
+
+
+/* PROFIL */
+
+#profil .navbar {
+    background-color: #F8CBAD;
+    border-radius: 5px;
+}
+
+#profil .navbar button{
+    height: 10%;
+    width: 90%;
+    background-color: #FFE4D2;
+    color: #B88765;
+    border: none;
+}
+
+#profil .password_section {
+    background-color: beige;
+    border-radius: 5px;
+}
+
+#profil .email_section {
+    background-color: beige;
+    border-radius: 5px;
+}
+
+#profil .infos_section {
+    background-color: beige;
+    border-radius: 5px;.
+}
+
+/* CART */
+
+#cart .all_event_container {
+    border-radius: 20px;
+}
+
+#cart .all_event_container tr {
+    background-color: #e4606d;
+    border-bottom: 2px solid white;
+}
+
+#cart .all_event_container table {
+    margin: 0;
+}
+
+#cart .all_event_container table img {
+    height: 100px;
+    width: 100px;
+}
+
+/* EVENT */
+
+#event #table_event{
+    background-color: palevioletred;
+    border-radius: 10px;
+}

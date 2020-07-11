@@ -1,0 +1,85 @@
+/* EVENT */
+
+#events .header_title{
+    height: 150px;
+}
+
+#events .title_event_container{
+    text-align: center;
+}
+
+#events .events_container {
+    border-radius: 15px;
+    padding: 20px;
+}
+
+#events .events_container h1 {
+    color: #0c5460;
+    font-family: "Comfortaa-Bold", sans-serif;
+    font-size: 28px;
+}
+
+
+#events #all_events_container {
+    background-color: #F8CBAD;
+}
+
+#events #my_events_container {
+    background-color: #FFC857;
+}
+
+
+#events #events_to_validate {
+    background-color: #CBDBDC;
+}
+
+#events .footer_events {
+    height: 100px;
+}
+
+#events .footer_events button{
+    background-color: #024C6E;
+    height: 50px;
+}
+
+#events .footer_events button{
+    background-color: #024C6E;
+    height: 50px;
+}
+
+#modal_add_event .modal-title {
+    color:  #0c5460;
+}
+
+#modal_add_event .modal-body {
+    padding: 50px 50px 10px 50px;
+}
+
+#modal_add_event input:focus, #modal_add_event textarea:focus, #modal_add_event label.custom-file-label:focus {
+    box-shadow: none;
+    border: 2px solid #0c5460;
+}
+#modal_add_event #label_picture:hover {
+    color: #0c5460;
+    font-weight: bold;
+}
+
+#modal_add_event #picture_container {
+    margin-top: 50px;
+}
+
+#modal_add_event #description_container {
+    margin-top: 50px;
+}
+
+#modal_add_event #description {
+    background-color: antiquewhite;
+}
+
+/* SETTINGS */
+
+#settings #commands .command_food:hover {
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
