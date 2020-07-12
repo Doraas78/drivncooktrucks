@@ -7,7 +7,7 @@
     <link rel="shortcut icon" type="image/png" href="<?= img_url('icon.png') ?>">
     <link href="<?= css_url('bootstrap/bootstrap.min') ?>" rel="stylesheet">
     <link href="<?= extras_url('fontawesome/css/all.css') ?>" rel="stylesheet">
-    <link href="<?= css_url('pagination') ?>" rel="stylesheet">
+    <link href="<?= css_url('dataTables.bootstrap4.min')?>" rel="stylesheet">
     <link href="<?= css_url('main') ?>" rel="stylesheet">
 </head>
 <body>
@@ -24,6 +24,7 @@
     <script src="<?= js_url('moment-with-locales.min') ?>"></script> <!-- Date lib  -->
     <script src="<?= js_url('pagination.min') ?>"></script> <!-- Pagination lib  -->
     <script src="<?= js_url('jquery.dataTables.min')?>"></script> <!-- Templating html  -->
+    <script src="<?= js_url('dataTables.bootstrap4.min')?>"></script> <!-- Templating html  -->
     <?php include (php_url_js('main'));?>
 
 </body>
