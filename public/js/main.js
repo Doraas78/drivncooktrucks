@@ -11,75 +11,6 @@ var test3 = 0;
 var cart = [];
 
 
-/* generate dropdown list cities start */
-
-var cities = [];
-$('#signIn').ready(function () {
-    $.get(
-        url('home', 'Address', 'getAllFrenchCity'),
-        {},
-        ''
-    )
-        .fail(function (result, status) {
-
-        })
-        .done(function (result, status) {
-            cities = JSON.parse(result);
-        })
-
-
-    choose_city = $('.choose_city');
-
-    choose_city.keyup(function () {
-
-        $('.city_list_ul').remove();
-
-        let search_value = $('.choose_city').val();
-
-        if (search_value.length > 0) {
-
-            /* Finds the elements of an array which satisfy a filter function. The original array is not affected. */
-            let found_cities = $.grep(cities, function (city) {
-                let value = escapeRegExp(search_value);
-                let search = new RegExp('^' + value, 'i');
-                return city.name.match(search);
-            });
-
-            var html = ['<ul class="list-group city_list_ul">'];
-
-            for (let i = 0; i < found_cities.length; i++) {
-                let li = '<li class="list-group-item d-flex align-items-center" id="' + found_cities[i]["id"] + '">' + found_cities[i]["name"] + ' (' + found_cities[i]["zip_code"] + ')';
-
-                html.push(li);
-                html.push('</li>');
-            }
-
-            html = html.join('\n');
-
-            choose_city.after(html);
-
-            $(".city_list_ul li").click(function (e) {
-
-                choose_city.val($(this).text());
-                choose_city.attr("value", $(this).attr("id"));
-
-            });
-
-        }
-    })
-
-    $('.choose_city').keyup(function () {
-        $('.choose_city').removeAttr('value');
-    });
-
-    $('.list_city_col').focusout(function (e) {
-        console.log(e);
-
-        console.log('focusout')
-    })
-
-})
-
 /* generate dropdown list cities end */
 
 const htmlProblemServer = '<span class="font-italic ">Oops ! Un soucis est apparu avec le serveur.<br>Veuillez recommencer</span>'
@@ -184,10 +115,6 @@ const formatDateTimeFrench = 'YYYY-MM-DD HH:mm';
 // Return a url
 function url(platform, controller, action) {
     return location.protocol + '//' + location.host + location.pathname + '?p=' + platform + '&c=' + controller + '&a=' + action;
-}
-
-function urlLog(platform, controller, action) {
-    console.log(location.protocol + '//' + location.host + location.pathname + '?p=' + platform + '&c=' + controller + '&a=' + action);
 }
 
 
@@ -491,8 +418,6 @@ $('#signIn').ready(function () {
             'json'
         )
         .fail(function (result, status) {
-            console.log(result)
-            console.log(status)
             $('#signIn').prepend(alertError)
         })
         .done(function (result, status) {
@@ -558,14 +483,11 @@ $('#connection').ready(function () {
         })
         .done(function (result, status) {
 
-            console.log(result)
             if (result === '0') {
-                console.log(result)
                 $('.btn_spinner_loading').remove();
                 $('#connection').prepend(alertErrorLogin)
                 $('#connection .btn_connection_form').attr('disabled', false)
             } else {
-                console.log(result)
                 window.location = url('user', 'Dashboard', 'index');
             }
         })
@@ -655,14 +577,16 @@ $('#order_truck_list').ready(function() {
         } else if (data.length <= 0) {
             $('#order_truck_list .trucks_table table tbody').html(htmlNoTrucks);
         } else {
-            let htmlCompiled = Handlebars.compile($('#template_truck_row').html())
 
-            $('#order_truck_list .trucks_table table tbody').html(htmlCompiled({
-                    data: JSON.parse(data)
-                })
-            );
+            $('#template_truck_row').ready(function(){
+                let htmlCompiled = Handlebars.compile($('#template_truck_row').html())
 
-            $('#trucks_table').DataTable();
+                $('#order_truck_list .trucks_table table tbody').html(htmlCompiled({
+                        data: JSON.parse(data)
+                    })
+                );
+            });
+
         }
     })
     .fail(function (result, state) {
@@ -688,7 +612,6 @@ $('#order_meal_list').ready(function () {
         .fail(function (result, status) {
             order_meal_list.prepend(alertError);
             $('#order_meal_list .btn_spinner_loading').remove();
-            console.log(result);
         })
         .done(function (result, status) {
 
@@ -788,8 +711,6 @@ $('#order_meal_list').ready(function () {
                 ''
             )
                 .fail(function (result, status) {
-                    console.log(result);
-                    console.log(status)
                     $('#order_meal_list .btn_spinner_loading').remove();
                     btn_go_to_menu_page.find('button').attr('disabled', false);
                 })
@@ -921,11 +842,9 @@ $('#order_menu_list').ready(function () {
                     cart: cart,
                     id_truck: parseInt($('#order_menu_list .title_truck').attr('id'))
                 },
-                ''
+                'json'
             )
                 .fail(function () {
-                    console.log(result);
-                    console.log(status)
                     $('#order_menu_list .btn_spinner_loading').remove();
                     btn_go_to_ingredient_page.find('button').attr('disabled', false);
                 })
@@ -1007,7 +926,6 @@ $('#order_ingredient_list').ready(function () {
 
                     quantity_input.attr('value', quantity - 1);
 
-                    console.log(quantity_input.attr('value'))
 
                     let quantityInput = quantity_input.attr('value');
 
@@ -1061,11 +979,9 @@ $('#order_ingredient_list').ready(function () {
                     cart: cart,
                     id_truck: parseInt($('#order_ingredient_list .title_truck').attr('id'))
                 },
-                ''
+                'json'
             )
                 .fail(function () {
-                    console.log(result);
-                    console.log(status)
                     $('#order_ingredient_list .btn_spinner_loading').remove();
                     btn_go_to_drink_page.find('button').attr('disabled', false);
                 })
@@ -1196,11 +1112,9 @@ $('#order_drink_list').ready(function () {
                     cart: cart,
                     id_truck: parseInt($('#order_drink_list .title_truck').attr('id'))
                 },
-                ''
+                'json'
             )
                 .fail(function () {
-                    console.log(result);
-                    console.log(status)
                     $('#order_drink_list .btn_spinner_loading').remove();
                     btn_go_to_cart_page.find('button').attr('disabled', false);
                 })
@@ -1498,21 +1412,23 @@ $('#event').ready(function () {
 
         if (result !== 'false') {
 
-            let htmlCompiled = Handlebars.compile($('#template_table_event').html());
-            all_event_container.append(htmlCompiled({
-                    data:  JSON.parse(result),
-                })
-            );
+            $('#template_table_event').ready(function() {
 
-            $('#table_event').DataTable( {
-                "pageLength": 5,
-                "lengthMenu": [ 5, 10, 15, 20, 25, "Tous" ],
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-                }
-            });
-            $('#event .btn_spinner_loading').remove();
+                let htmlCompiled = Handlebars.compile($('#template_table_event').html());
+                all_event_container.append(htmlCompiled({
+                        data:  JSON.parse(result),
+                    })
+                );
 
+                $('#table_event').DataTable( {
+                    "pageLength": 5,
+                    "lengthMenu": [ 5, 10, 15, 20, 25, "Tous" ],
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                    }
+                });
+                $('#event .btn_spinner_loading').remove();
+            })
 
         } else {
             $('#event .btn_spinner_loading').remove();
@@ -1525,8 +1441,6 @@ $('#event').ready(function () {
 
 $('#profil').ready(function () {
 
-
-    console.log('profil reay')
 
     /* password changes */
 
@@ -1717,13 +1631,9 @@ $('#about').ready(function () {
             },
         )
             .fail(function (result, status) {
-                console.log(result);
-                console.log(status)
             })
             .done(function (result, status) {
 
-                console.log(result)
-                console.log(status)
 
                 if (result === '1') {
                     //pop up

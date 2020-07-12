@@ -14,14 +14,13 @@
     <?php include('header_user.php'); ?>
 
     <?= $content ?>
-
+    <script src="<?= js_url('handlebars.min') ?>"></script> <!-- Templating language  -->
     <script src="<?= js_url('jquery-3.5.0.min') ?>"></script>
     <script src="<?= js_url('bootstrap/bootstrap.min') ?>"></script> <!-- Framework Frontend  -->
     <script src="<?= js_url('jquery_validate/jquery.validate.min') ?>"></script> <!-- Validation input lib  -->
     <script src="<?= js_url('jquery_validate/additional-methods.min') ?>"></script>
     <script src="<?= js_url('moment-with-locales.min') ?>"></script> <!-- Date lib  -->
     <script src="<?= js_url('pagination.min') ?>"></script> <!-- Pagination lib  -->
-    <script src="<?= js_url('handlebars.min') ?>"></script> <!-- Templating language  -->
     <script src="<?= js_url('jquery.dataTables.min')?>"></script> <!-- Templating html  -->
     <script src="<?= js_url('main') ?>"></script>
 
