@@ -13,6 +13,12 @@ class Framework
 
     // Initialization
     private static function init() {
+
+        /* STATUS ORDER */
+        define('WAIT', 1);
+        define('IN_PROGRESS', 2);
+        define('DONE', 3);
+
         // Define path constants root
 
         define("DS", DIRECTORY_SEPARATOR);

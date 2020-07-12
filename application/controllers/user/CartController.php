@@ -29,7 +29,6 @@ class CartController extends Controller
                 $truck = $truckModel->getOneTruckFullAddressActive($keyTruck);
                 $keyTruckId = 'truck' .  $truck['id_truck'];
                 $cart[$keyTruckId] = $truck;
-
                 foreach ($valueTruck as $keyCategoryFood => $valueCategoryFood)
                 {
                     switch ($keyCategoryFood) {
@@ -90,10 +89,14 @@ class CartController extends Controller
                 }
 
                 $this->data['cart'] = $cart;
+
             }
+
         }else
         {
+
             $this->data['existCart'] = false;
+
         }
     }
 

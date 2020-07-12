@@ -24,4 +24,12 @@ class EventController extends Controller
         $this->render_data($data);
     }
 
+    public function addCustomerEvent()
+    {
+        $organizations = new OrganizationModel();
+        $data = $organizations->insertParticipationCustomerToEvent($_SESSION['customer']['email'], (int)$_POST[$idEvent]);
+
+        var_dump($data);
+    }
+
 }

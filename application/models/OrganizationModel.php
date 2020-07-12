@@ -50,10 +50,12 @@ class OrganizationModel extends Model
 
     public function getValidOrganizations()
     {
-        $sql = 'SELECT *
-                FROM ' . $this->getTable() .  '
+        $sql = 'SELECT *, CITY.name AS cityName, EVENT.name AS eventName, TRUCK.name AS truckName
+                FROM ORGANIZATION
                 INNER JOIN EVENT ON EVENT.id = ORGANIZATION.id_event 
                 INNER JOIN TRUCK ON TRUCK.id = ORGANIZATION.id_truck
+                INNER JOIN ADDRESS ON ADDRESS.id = TRUCK.id_address
+                INNER JOIN CITY ON CITY.id = ADDRESS.city
                 WHERE EVENT.valid = 1 && EVENT.active = 1';
 
         return $this->query($sql);
@@ -87,13 +89,14 @@ class OrganizationModel extends Model
         return $this->find($key, $value);
     }
 
-    public function getOrganizationsByKeyMultipleValues($key, $array_value)
+
+    public function insertParticipationCustomerToEvent(string $email, int $idEvent)
     {
+        $sql = "INSERT INTO `PARTICIPATION` (`email_customer`, `id_event`, `date`) 
+                VALUES (?,?, ?)";
 
-         var_dump($this->query('SELECT * FROM ' . $this->getTable() .
-             ' WHERE ' . $key . ' IN ' . $array_value));
+        return $this->insert($sql, [$email, $idEvent, Date('Y-m-d')]);
     }
-
 
 
 }

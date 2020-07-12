@@ -502,16 +502,13 @@ $('#dashboard').ready(function () {
                    subject: escapeHtml($('#newslettersForm #subject').val()),
                    message: escapeHtml($('#newslettersForm #message').val())
                },
-               'html'
+               'json'
            )
            .fail(function(result, status){
-               $('#here').html(result)
-
                $('#newslettersForm .btn_spinner_loading').remove();
                $("#newslettersForm").append(alertError);
            })
            .done(function (result, status) {
-               $('#here').html(result)
 
                if(result === '1')
                {

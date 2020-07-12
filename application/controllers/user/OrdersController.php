@@ -106,11 +106,13 @@ class OrdersController extends Controller
 
             }
 
+            $this->deleteCartAction();
+
+            echo json_encode(1);
+
         }else{
             echo json_encode(0);
         }
-
-
     }
 
     public function truckMealsViewAction()
@@ -206,75 +208,86 @@ class OrdersController extends Controller
 
     public function saveCartAction()
     {
-
         $this->createCart();
 
         $id_truck = $_POST['id_truck'];
         $cart = $_POST['cart'];
 
-
         if (is_array($_POST['item'])) {
 
             foreach ($_POST['item'] as $valueTypeFood) {
+
                 switch ($valueTypeFood) {
                     case 'meal':
 
-                        foreach ($cart['meal'] as $value) {
+                        if(isset($cart['meal']) && count($cart['meal'])) {
+
+                            foreach ($cart['meal'] as $value) {
+
+                                if ($value['quantity_meal'] <= 0) {
 
 
-                            if ($value['quantity_meal'] <= 0) {
-                                if (array_key_exists($value['id_meal'], $_SESSION['cart'][$id_truck]['meal']) !== false) {
-                                    unset($_SESSION['cart'][$id_truck]['meal'][$value['id_meal']]);
+                                    if (array_key_exists($value['id_meal'], $_SESSION['cart'][$id_truck]['meal']) !== false) {
+                                        unset($_SESSION['cart'][$id_truck]['meal'][$value['id_meal']]); // delete meal if no exist anymore
+                                    }
+                                } else {
+                                    $_SESSION['cart'][$id_truck]['meal'][$value['id_meal']]['quantity_meal'] = $value['quantity_meal']; // change quantity of meal
+
                                 }
-                            } else {
-                                $_SESSION['cart'][$id_truck]['meal'][$value['id_meal']]['quantity_meal'] = $value['quantity_meal']; // change quantity of meal
                             }
                         }
 
                         break;
                     case 'menu':
 
-                        foreach ($cart['menu'] as $value) {
+                        if(isset($cart['menu']) && count($cart['menu']))
+                        {
+                            foreach ($cart['menu'] as $value) {
 
+                                if ($value['quantity_menu'] <= 0) {
 
-                            if ($value['quantity_menu'] <= 0) {
-
-                                if (array_key_exists($value['id_menu'], $_SESSION['cart'][$id_truck]['menu']) !== false) {
-                                    unset($_SESSION['cart'][$id_truck]['menu'][$value['id_menu']]);
+                                    if (array_key_exists($value['id_menu'], $_SESSION['cart'][$id_truck]['menu']) !== false) {
+                                        unset($_SESSION['cart'][$id_truck]['menu'][$value['id_menu']]);
+                                    }
+                                } else {
+                                    $_SESSION['cart'][$id_truck]['menu'][$value['id_menu']]['quantity_menu'] = $value['quantity_menu']; // change quantity of menu
                                 }
-                            } else {
-                                $_SESSION['cart'][$id_truck]['menu'][$value['id_menu']]['quantity_menu'] = $value['quantity_menu']; // change quantity of menu
                             }
                         }
 
                         break;
                     case 'ingredient':
 
-                        foreach ($cart['ingredient'] as $value) {
+                        if(isset($cart['ingredient']) && count($cart['ingredient'])) {
+                            foreach ($cart['ingredient'] as $value) {
 
 
-                            if ($value['quantity_ingredient'] <= 0) {
+                                if ($value['quantity_ingredient'] <= 0) {
 
-                                if (array_key_exists($value['id_ingredient'], $_SESSION['cart'][$id_truck]['ingredient']) !== false) {
-                                    unset($_SESSION['cart'][$id_truck]['ingredient'][$value['id_ingredient']]);
+                                    if (array_key_exists($value['id_ingredient'], $_SESSION['cart'][$id_truck]['ingredient']) !== false) {
+                                        unset($_SESSION['cart'][$id_truck]['ingredient'][$value['id_ingredient']]);
+                                    }
+                                } else {
+                                    $_SESSION['cart'][$id_truck]['ingredient'][$value['id_ingredient']]['quantity_ingredient'] = $value['quantity_ingredient']; // change quantity of menu
                                 }
-                            } else {
-                                $_SESSION['cart'][$id_truck]['ingredient'][$value['id_ingredient']]['quantity_ingredient'] = $value['quantity_ingredient']; // change quantity of menu
                             }
                         }
                         break;
                     case 'drink':
 
-                        foreach ($cart['drink'] as $value) {
+                        if(isset($cart['drink']) && count($cart['drink'])) {
+
+                            foreach ($cart['drink'] as $value) {
 
 
-                            if ($value['quantity_drink'] <= 0) {
+                                if ($value['quantity_drink'] <= 0) {
 
-                                if (array_key_exists($value['id_drink'], $_SESSION['cart'][$id_truck]['drink']) !== false) {
-                                    unset($_SESSION['cart'][$id_truck]['drink'][$value['id_drink']]);
+                                    if (array_key_exists($value['id_drink'], $_SESSION['cart'][$id_truck]['drink']) !== false) {
+                                        unset($_SESSION['cart'][$id_truck]['drink'][$value['id_drink']]);
+                                    }
+                                } else {
+                                    $_SESSION['cart'][$id_truck]['drink'][$value['id_drink']]['quantity_drink'] = $value['quantity_drink']; // change quantity of menu
                                 }
-                            } else {
-                                $_SESSION['cart'][$id_truck]['drink'][$value['id_drink']]['quantity_drink'] = $value['quantity_drink']; // change quantity of menu
                             }
                         }
                         break;
@@ -351,11 +364,16 @@ class OrdersController extends Controller
         }
     }
 
-    private function deleteCartAction()
+    public function deleteCartAction()
     {
         unset($_SESSION['cart']);
     }
 
+    public function deleteCartRedirectViewAction()
+    {
+        unset($_SESSION['cart']);
+        redirect('user', 'Cart', 'index');
+    }
 }
 
 

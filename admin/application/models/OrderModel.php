@@ -9,9 +9,7 @@ class OrderModel extends Model
     {
         parent::__construct('ORDER');
 
-        define('WAIT', 1);
-        define('IN_PROGRESS', 2);
-        define('DONE', 3);
+
 
     }
     public function getOrdersByFranchisee(int $id)

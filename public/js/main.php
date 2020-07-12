@@ -22,6 +22,7 @@
     const htmlNoMenus = '<span class="font-italic ">Ce camion ne contient aucun menus disponible</span>';
     const htmlNoDrinks = '<span class="font-italic ">Ce camion ne contient aucune boissons disponible</span>';
     const htmlNoTrucks = '<span class="font-italic ">Oops ! Aucun camion n\'est disponible</span>';
+    const htmlNoOrdersCustomer = '<span class="font-italic ">Aucune commande </span>';
 
 
     const loadingSpan = '<div class="spinner-border text-dark btn_spinner_loading" role="status">' +
@@ -254,6 +255,10 @@
         "validateOnDatalist",
         { onDatalist: true }
     );
+
+    Handlebars.registerHelper('eq', function(arg1, arg2) {
+        return (arg1 == arg2) ? true : false;
+    });
 
     /******************************************
      *
@@ -611,67 +616,70 @@
             },
             'json'
         )
-            .fail(function (result, status) {
-                order_meal_list.prepend(alertError);
-                $('#order_meal_list .btn_spinner_loading').remove();
-            })
-            .done(function (result, status) {
+        .fail(function (result, status) {
+            order_meal_list.prepend(alertError);
+            $('#order_meal_list .btn_spinner_loading').remove();
+        })
+        .done(function (result, status) {
 
-                let data = JSON.parse(result)
+            let data = JSON.parse(result)
 
-                if (data === 'isNull') {
-                    $('#order_meal_list .meals_table table tbody').html(htmlProblemServer);
+            if (data === 'isNull') {
+                $('#order_meal_list .meals_table table tbody').html(htmlProblemServer);
 
-                } else if (data["truck"]['meals'].length <= 0) {
-                    $('#order_meal_list .meals_table table tbody').html(htmlNoMeals);
+            } else if (data["truck"]['meals'].length <= 0) {
+                $('#order_meal_list .meals_table table tbody').html(htmlNoMeals);
 
-                } else {
+            } else {
 
-                    let htmlCompiled = Handlebars.compile($('#template_meal_row').html())
+                let htmlCompiled = Handlebars.compile($('#template_meal_row').html())
 
-                    $('#order_meal_list .meals_table table tbody').html(htmlCompiled({
-                        data: data['truck']['meals']
-                    }))
+                $('#order_meal_list .meals_table table tbody').html(htmlCompiled({
+                    data: data['truck']['meals']
+                }))
 
 
-                    $('#order_meal_list .add_meal').click(function (e) {
+                $('#order_meal_list .add_meal').click(function (e) {
 
-                        let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
-                        let quantity_input = $('#order_meal_list #' + className);
-                        let quantity = parseInt(quantity_input.attr('value'));
+                    let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
+                    let quantity_input = $('#order_meal_list #' + className);
+                    let quantity = parseInt(quantity_input.attr('value'));
 
-                        quantity_input.attr('value', quantity + 1);
-                        let quantityInput = quantity_input.attr('value');
+                    quantity_input.attr('value', quantity + 1);
+                    let quantityInput = quantity_input.attr('value');
 
-                        let max = quantity_input.attr('max') > 5 ? 5 : quantity_input.attr('max');
-                        if (quantityInput > max) {
-                            quantity_input.attr('value', max);
-                            quantity_input.next('.messsage_maximum_quantity_achieve').removeClass('d-none')
-                        }
-                    })
+                    let max = quantity_input.attr('max') > 5 ? 5 : quantity_input.attr('max');
+                    if (quantityInput > max) {
+                        quantity_input.attr('value', max);
+                        quantity_input.next('.messsage_maximum_quantity_achieve').removeClass('d-none')
+                    }
+                })
 
-                    $('#order_meal_list .remove_meal').click(function (e) {
+                $('#order_meal_list .remove_meal').click(function (e) {
 
-                        let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
-                        let quantity_input = $('#order_meal_list #' + className);
-                        let quantity = parseInt(quantity_input.attr('value'));
+                    let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
+                    let quantity_input = $('#order_meal_list #' + className);
+                    let quantity = parseInt(quantity_input.attr('value'));
 
-                        if (!quantity_input.next('.messsage_maximum_quantity_achieve').hasClass('d-none'))
-                            quantity_input.next('.messsage_maximum_quantity_achieve').addClass('d-none')
+                    if (!quantity_input.next('.messsage_maximum_quantity_achieve').hasClass('d-none'))
+                        quantity_input.next('.messsage_maximum_quantity_achieve').addClass('d-none')
 
-                        quantity_input.attr('value', quantity - 1);
+                    quantity_input.attr('value', quantity - 1);
 
-                        let quantityInput = quantity_input.attr('value');
+                    let quantityInput = quantity_input.attr('value');
 
-                        let min = 0
-                        if (quantityInput < min)
-                            quantity_input.attr('value', min);
+                    let min = 0
+                    if (quantityInput < min)
+                        quantity_input.attr('value', min);
 
-                    })
-                }
-            })
+                })
+            }
+        })
         /* save cart */
         $('.btn_save_cart_meals').click(function () {
+
+            let btn_save_cart_meals = $('.btn_save_cart_meals');
+
             $('.quantity_meal_order').each(function () {
 
                 if (this.value !== undefined && this.value >= 0) {
@@ -692,41 +700,35 @@
                         }
                     }
                 }
+                if (cart.length > 0) {
+                    btn_save_cart_meals.after(loadingSpan);
+                    btn_save_cart_meals.attr('disabled', true);
+
+                    $.post(
+                        url('user', 'Orders', 'saveCart'),
+                        {
+                            item: 'meal',
+                            cart: cart,
+                            id_truck: parseInt($('#order_meal_list .title_truck').attr('id'))
+                        },
+                        'json'
+                    )
+                    .fail(function (result, status) {
+                        $('#order_meal_list .btn_spinner_loading').remove();
+                        btn_save_cart_meals.removeAttr('disabled');
+                    })
+                    .done(function (result, status) {
+                        $('#order_meal_list .btn_spinner_loading').remove();
+                        btn_save_cart_meals.removeAttr('disabled');
+                    })
+                }
+
             })
         })
 
         /* switch page to menu âge and save cart in session */
         $('#btn_go_to_menu_page').click(function () {
-            let btn_go_to_menu_page = $('#btn_go_to_menu_page');
-
-            if (cart.length > 0) {
-                btn_go_to_menu_page.after(loadingSpan);
-                btn_go_to_menu_page.find('button').attr('disabled', true);
-
-                $.post(
-                    url('user', 'Orders', 'saveCart'),
-                    {
-                        item: 'meal',
-                        cart: cart,
-                        id_truck: parseInt($('#order_meal_list .title_truck').attr('id'))
-                    },
-                    'json'
-                )
-                    .fail(function (result, status) {
-                        $('#order_meal_list .btn_spinner_loading').remove();
-                        btn_go_to_menu_page.find('button').attr('disabled', false);
-                    })
-                    .done(function (result, status) {
-                        $('#order_meal_list .btn_spinner_loading').remove();
-                        btn_go_to_menu_page.find('button').attr('disabled', true);
-                        window.location = url('user', 'Orders', 'truckMenusView') + '&id=' + $('.title_truck').attr('id')
-
-                    })
-            } else {
-                $('#order_meal_list .btn_spinner_loading').remove();
-                btn_go_to_menu_page.find('button').attr('disabled', true);
-                window.location = url('user', 'Orders', 'truckMenusView') + '&id=' + $('.title_truck').attr('id')
-            }
+            window.location = url('user', 'Orders', 'truckMenusView') + '&id=' + $('.title_truck').attr('id')
         })
     })
 
@@ -745,66 +747,66 @@
             },
             'json'
         )
-            .fail(function (result, status) {
+        .fail(function (result, status) {
 
-                order_menu_list.prepend(alertError);
-                $('#order_menu_list .btn_spinner_loading').remove();
-            })
-            .done(function (result, status) {
+            order_menu_list.prepend(alertError);
+            $('#order_menu_list .btn_spinner_loading').remove();
+        })
+        .done(function (result, status) {
+
+            let data = JSON.parse(result)
+
+            if (data === 'isNull') {
+
+                $('#order_menu_list .menus_table table tbody').html(htmlProblemServer);
+
+            } else if (data['truck']['menus'].length <= 0) {
+                $('#order_menu_list .menus_table table tbody').html(htmlNoMenus);
+
+            } else {
 
                 let data = JSON.parse(result)
 
-                if (data === 'isNull') {
+                let htmlCompiled = Handlebars.compile($('#template_menu_row').html())
 
-                    $('#order_menu_list .menus_table table tbody').html(htmlProblemServer);
+                $('#order_menu_list .menus_table table tbody').html(htmlCompiled({
+                    data: data['truck']['menus']
+                }))
 
-                } else if (data['truck']['menus'].length <= 0) {
-                    $('#order_menu_list .menus_table table tbody').html(htmlNoMenus);
+                $('#order_menu_list .add_menu').click(function (e) {
 
-                } else {
+                    let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
+                    let quantity_input = $('#order_menu_list #' + className)
+                    let quantity = parseInt(quantity_input.attr('value'));
 
-                    let data = JSON.parse(result)
+                    quantity_input.attr('value', quantity + 1);
+                    let quantityInput = quantity_input.attr('value');
 
-                    let htmlCompiled = Handlebars.compile($('#template_menu_row').html())
+                    let max = quantity_input.attr('max') > 5 ? 5 : quantity_input.attr('max');
+                    if (quantityInput > max) {
+                        quantity_input.attr('value', max);
+                        quantity_input.next('.messsage_maximum_quantity_achieve').removeClass('d-none')
+                    }
+                })
 
-                    $('#order_menu_list .menus_table table tbody').html(htmlCompiled({
-                        data: data['truck']['menus']
-                    }))
+                $('#order_menu_list .remove_menu').click(function (e) {
+                    let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
+                    let quantity_input = $('#order_menu_list #' + className)
+                    let quantity = parseInt(quantity_input.attr('value'));
 
-                    $('#order_menu_list .add_menu').click(function (e) {
+                    if (!quantity_input.next('.messsage_maximum_quantity_achieve').hasClass('d-none'))
+                        quantity_input.next('.messsage_maximum_quantity_achieve').addClass('d-none')
 
-                        let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
-                        let quantity_input = $('#order_menu_list #' + className)
-                        let quantity = parseInt(quantity_input.attr('value'));
+                    quantity_input.attr('value', quantity - 1);
 
-                        quantity_input.attr('value', quantity + 1);
-                        let quantityInput = quantity_input.attr('value');
+                    let quantityInput = quantity_input.attr('value');
 
-                        let max = quantity_input.attr('max') > 5 ? 5 : quantity_input.attr('max');
-                        if (quantityInput > max) {
-                            quantity_input.attr('value', max);
-                            quantity_input.next('.messsage_maximum_quantity_achieve').removeClass('d-none')
-                        }
-                    })
-
-                    $('#order_menu_list .remove_menu').click(function (e) {
-                        let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
-                        let quantity_input = $('#order_menu_list #' + className)
-                        let quantity = parseInt(quantity_input.attr('value'));
-
-                        if (!quantity_input.next('.messsage_maximum_quantity_achieve').hasClass('d-none'))
-                            quantity_input.next('.messsage_maximum_quantity_achieve').addClass('d-none')
-
-                        quantity_input.attr('value', quantity - 1);
-
-                        let quantityInput = quantity_input.attr('value');
-
-                        let min = 0
-                        if (quantityInput < min)
-                            quantity_input.attr('value', min);
-                    })
-                }
-            })
+                    let min = 0
+                    if (quantityInput < min)
+                        quantity_input.attr('value', min);
+                })
+            }
+        })
 
         $('.btn_save_cart_menus').click(function () {
             $('.quantity_menu_order').each(function () {
@@ -828,15 +830,12 @@
                     }
                 }
             })
-        })
-
-        /* switch page to menu âge and save cart in session */
-        $('#btn_go_to_ingredient_page').click(function () {
-            let btn_go_to_ingredient_page = $('#btn_go_to_ingredient_page');
 
             if (cart.length > 0) {
-                btn_go_to_ingredient_page.after(loadingSpan);
-                btn_go_to_ingredient_page.find('button').attr('disabled', true);
+                let btn_save_cart_menus = $('#btn_save_cart_menus')
+
+                btn_save_cart_menus.after(loadingSpan);
+                btn_save_cart_menus.find('button').attr('disabled', true);
 
                 $.post(
                     url('user', 'Orders', 'saveCart'),
@@ -847,22 +846,22 @@
                     },
                     'json'
                 )
-                    .fail(function () {
-                        $('#order_menu_list .btn_spinner_loading').remove();
-                        btn_go_to_ingredient_page.find('button').attr('disabled', false);
-                    })
-                    .done(function (result, status) {
+                .fail(function () {
+                    $('#order_menu_list .btn_spinner_loading').remove();
+                    btn_save_cart_menus.removeAttr('disabled');
+                })
+                .done(function (result, status) {
 
-                        $('#order_menu_list .btn_spinner_loading').remove();
-                        btn_go_to_ingredient_page.find('button').attr('disabled', true);
+                    $('#order_menu_list .btn_spinner_loading').remove();
+                    btn_save_cart_menus.removeAttr('disabled');
 
-                        window.location = url('user', 'Orders', 'truckIngredientsView') + '&id=' + $('.title_truck').attr('id')
-                    })
-            } else {
-                $('#order_menu_list .btn_spinner_loading').remove();
-                btn_go_to_ingredient_page.find('button').attr('disabled', true);
-                window.location = url('user', 'Orders', 'truckIngredientsView') + '&id=' + $('.title_truck').attr('id')
+                 })
             }
+        })
+
+        /* switch page to menu âge and save cart in session */
+        $('#btn_go_to_ingredient_page').click(function () {
+            window.location = url('user', 'Orders', 'truckIngredientsView') + '&id=' + $('.title_truck').attr('id')
         })
     })
 
@@ -880,64 +879,64 @@
             },
             'json'
         )
-            .fail(function (result, status) {
-                order_ingredient_list.prepend(alertError);
-                $('#order_ingredient_list .btn_spinner_loading').remove();
-            })
-            .done(function (result, status) {
+        .fail(function (result, status) {
+            order_ingredient_list.prepend(alertError);
+            $('#order_ingredient_list .btn_spinner_loading').remove();
+        })
+        .done(function (result, status) {
 
-                let data = JSON.parse(result)
+            let data = JSON.parse(result)
 
-                if (data === 'isNull') {
+            if (data === 'isNull') {
 
-                    $('#order_ingredient_list .ingredients_table table tbody').html(htmlProblemServer);
+                $('#order_ingredient_list .ingredients_table table tbody').html(htmlProblemServer);
 
-                } else if (data['truck']['ingredients'].length <= 0) {
-                    $('#order_ingredient_list .ingredients_table table tbody').html(htmlNoIngredients);
+            } else if (data['truck']['ingredients'].length <= 0) {
+                $('#order_ingredient_list .ingredients_table table tbody').html(htmlNoIngredients);
 
-                } else {
+            } else {
 
-                    let htmlCompiled = Handlebars.compile($('#template_ingredient_row').html())
+                let htmlCompiled = Handlebars.compile($('#template_ingredient_row').html())
 
-                    $('#order_ingredient_list .ingredients_table table tbody').html(htmlCompiled({
-                        data: data['truck']['ingredients']
-                    }))
+                $('#order_ingredient_list .ingredients_table table tbody').html(htmlCompiled({
+                    data: data['truck']['ingredients']
+                }))
 
-                    $('#order_ingredient_list .add_ingredient').click(function (e) {
+                $('#order_ingredient_list .add_ingredient').click(function (e) {
 
-                        let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
-                        let quantity_input = $('#order_ingredient_list #' + className)
-                        let quantity = parseInt(quantity_input.attr('value'));
+                    let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
+                    let quantity_input = $('#order_ingredient_list #' + className)
+                    let quantity = parseInt(quantity_input.attr('value'));
 
-                        quantity_input.attr('value', quantity + 1);
-                        let quantityInput = quantity_input.attr('value');
+                    quantity_input.attr('value', quantity + 1);
+                    let quantityInput = quantity_input.attr('value');
 
-                        let max = quantity_input.attr('max') > 5 ? 5 : quantity_input.attr('max');
-                        if (quantityInput > max) {
-                            quantity_input.attr('value', max);
-                            quantity_input.next('.messsage_maximum_quantity_achieve').removeClass('d-none')
-                        }
-                    })
+                    let max = quantity_input.attr('max') > 5 ? 5 : quantity_input.attr('max');
+                    if (quantityInput > max) {
+                        quantity_input.attr('value', max);
+                        quantity_input.next('.messsage_maximum_quantity_achieve').removeClass('d-none')
+                    }
+                })
 
-                    $('#order_ingredient_list .remove_ingredient').click(function (e) {
-                        let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
-                        let quantity_input = $('#order_ingredient_list #' + className)
-                        let quantity = parseInt(quantity_input.attr('value'));
+                $('#order_ingredient_list .remove_ingredient').click(function (e) {
+                    let className = e.currentTarget.classList[e.currentTarget.classList.length - 1];
+                    let quantity_input = $('#order_ingredient_list #' + className)
+                    let quantity = parseInt(quantity_input.attr('value'));
 
-                        if (!quantity_input.next('.messsage_maximum_quantity_achieve').hasClass('d-none')) ;
-                        quantity_input.next('.messsage_maximum_quantity_achieve').addClass('d-none');
+                    if (!quantity_input.next('.messsage_maximum_quantity_achieve').hasClass('d-none')) ;
+                    quantity_input.next('.messsage_maximum_quantity_achieve').addClass('d-none');
 
-                        quantity_input.attr('value', quantity - 1);
+                    quantity_input.attr('value', quantity - 1);
 
 
-                        let quantityInput = quantity_input.attr('value');
+                    let quantityInput = quantity_input.attr('value');
 
-                        let min = 0;
-                        if (quantityInput < min)
-                            quantity_input.attr('value', min);
-                    })
-                }
-            })
+                    let min = 0;
+                    if (quantityInput < min)
+                        quantity_input.attr('value', min);
+                })
+            }
+        })
 
         $('.btn_save_cart_ingredients').click(function () {
             $('.quantity_ingredient_order').each(function () {
@@ -965,15 +964,12 @@
                     }
                 }
             })
-        })
 
-        /* switch page to drinks page and save cart in session */
-        $('#btn_go_to_drink_page').click(function () {
-            let btn_go_to_drink_page = $('#btn_go_to_drink_page');
+            let btn_save_cart_ingredients = $('#btn_save_cart_ingredients');
 
             if (cart.length > 0) {
-                btn_go_to_drink_page.after(loadingSpan);
-                btn_go_to_drink_page.find('button').attr('disabled', true);
+                btn_save_cart_ingredients.after(loadingSpan);
+                btn_save_cart_ingredients.attr('disabled', true);
 
                 $.post(
                     url('user', 'Orders', 'saveCart'),
@@ -984,21 +980,20 @@
                     },
                     'json'
                 )
-                    .fail(function () {
-                        $('#order_ingredient_list .btn_spinner_loading').remove();
-                        btn_go_to_drink_page.find('button').attr('disabled', false);
-                    })
-                    .done(function (result, status) {
-                        $('#order_ingredient_list .btn_spinner_loading').remove();
-                        btn_go_to_drink_page.find('button').attr('disabled', true);
-
-                        window.location = url('user', 'Orders', 'truckDrinksView') + '&id=' + $('.title_truck').attr('id')
-                    })
-            } else {
-                $('#order_ingredient_list .btn_spinner_loading').remove();
-                btn_go_to_drink_page.find('button').attr('disabled', true);
-                window.location = url('user', 'Orders', 'truckDrinksView') + '&id=' + $('.title_truck').attr('id')
+                .fail(function () {
+                    $('#order_ingredient_list .btn_spinner_loading').remove();
+                    btn_save_cart_ingredients.removeAttr('disabled');
+                })
+                .done(function (result, status) {
+                    $('#order_ingredient_list .btn_spinner_loading').remove();
+                    btn_save_cart_ingredients.removeAttr('disabled');
+                })
             }
+        })
+
+        /* switch page to drinks page and save cart in session */
+        $('#btn_go_to_drink_page').click(function () {
+            window.location = url('user', 'Orders', 'truckDrinksView') + '&id=' + $('.title_truck').attr('id')
         })
     })
 
@@ -1015,12 +1010,12 @@
             },
             'json'
         )
-            .fail(function (result, status) {
-                order_drink_list.prepend(alertError);
-                $('#order_drink_list .btn_spinner_loading').remove();
+        .fail(function (result, status) {
+            order_drink_list.prepend(alertError);
+            $('#order_drink_list .btn_spinner_loading').remove();
 
-            })
-            .done(function (result, status) {
+        })
+        .done(function (result, status) {
 
                 let data = JSON.parse(result)
 
@@ -1098,15 +1093,12 @@
                     }
                 }
             })
-        })
 
-        /* switch page to drinks page and save cart in session */
-        $('#btn_go_to_cart_page').click(function () {
-            let btn_go_to_cart_page = $('#btn_go_to_cart_page');
+            let btn_save_cart_drinks = $('#btn_save_cart_drinks');
 
             if (cart.length > 0) {
-                btn_go_to_cart_page.after(loadingSpan);
-                btn_go_to_cart_page.find('button').attr('disabled', true);
+                btn_save_cart_drinks.after(loadingSpan);
+                btn_save_cart_drinks.attr('disabled', true);
 
                 $.post(
                     url('user', 'Orders', 'saveCart'),
@@ -1119,18 +1111,20 @@
                 )
                     .fail(function () {
                         $('#order_drink_list .btn_spinner_loading').remove();
-                        btn_go_to_cart_page.find('button').attr('disabled', false);
+                        btn_save_cart_drinks.removeAttr('disabled');
                     })
                     .done(function (result, status) {
                         $('#order_drink_list .btn_spinner_loading').remove();
-                        btn_go_to_cart_page.find('button').attr('disabled', true);
-                        window.location = url('user', 'Cart', 'index')
+                        btn_save_cart_drinks.removeAttr('disabled');
                     })
-            } else {
-                $('#order_drink_list .btn_spinner_loading').remove();
-                btn_go_to_cart_page.find('button').attr('disabled', true);
-                window.location = url('user', 'Cart', 'index')
             }
+        })
+
+        /* switch page to drinks page and save cart in session */
+        $('#btn_go_to_cart_page').click(function () {
+
+            window.location = url('user', 'Cart', 'index')
+
         })
     })
 
@@ -1142,6 +1136,8 @@
     /* CART */
 
     $('#cart').ready(function () {
+
+        console.log(cart);
 
         $('.container_btn_add_remove_item').ready(function () {
 
@@ -1302,9 +1298,12 @@
 
                 if (cart['menu'].length > 0 || cart['ingredient'].length > 0 || cart['drink'].length > 0 || cart['meal'].length > 0) {
 
+
                     btn_save_cart.after(loadingSpan);
                     btn_save_cart.attr('disabled', true);
 
+                    cart = Object.assign({}, cart);
+                    console.log(cart)
 
                     $.post(
                         url('user', 'Orders', 'saveCart'),
@@ -1315,17 +1314,21 @@
                         },
                         'json'
                     )
-                        .fail(function (result, status) {
+                    .fail(function (result, status) {
+                        $('#here').html(result)
 
-                            $('#cart .btn_spinner_loading').remove();
-                            btn_save_cart.removeAttr('disabled');
-                        })
-                        .done(function (result, status) {
-                            $('#cart .btn_spinner_loading').remove();
-                            btn_save_cart.removeAttr('disabled');
-                            //window.location = url('user', 'Cart', 'index')
+                        $('#cart .btn_spinner_loading').remove();
+                        btn_save_cart.removeAttr('disabled');
+                    })
+                    .done(function (result, status) {
 
-                        })
+                        $('#here').html(result)
+
+                        $('#cart .btn_spinner_loading').remove();
+                        btn_save_cart.removeAttr('disabled');
+                        //window.location = url('user', 'Cart', 'index')
+
+                    })
                 } else {
                     $('#cart .btn_spinner_loading').remove();
                     btn_save_cart.removeAttr('disabled');
@@ -1359,6 +1362,7 @@
         });
 
         function payement_card(){
+
             let btn_payement_form = $('#btn_payement_form');
             btn_payement_form.after(loadingSpan);
             btn_payement_form.attr('disabled', true);
@@ -1375,21 +1379,27 @@
                 },
                 'json'
             )
-                .fail(function (result) {
-                    $('#here').html(result)
+            .fail(function (result) {
 
-                    btn_payement_form.removeAttr('disabled');
-                    $('.btn_spinner_loading').remove();
-                    $('#payementModal').append(alertError);
-                })
-                .done(function (result, status) {
+                btn_payement_form.removeAttr('disabled');
+                $('.btn_spinner_loading').remove();
+                $('#payementModal').append(alertError);
+            })
+            .done(function (result, status) {
 
-                    $('#here').html(result)
-
+                $('#here').html(result);
+                if(result === '1')
+                {
                     btn_payement_form.removeAttr('disabled');
                     $('.btn_spinner_loading').remove();
                     $('#payementModal').append(alertSuccesDataSave);
-                })
+                    location.reload();
+                } else {
+                    btn_payement_form.removeAttr('disabled');
+                    $('.btn_spinner_loading').remove();
+                    $('#payementModal').append(alertError);
+                }
+            })
         }
     })
 
@@ -1536,13 +1546,11 @@
         // SUBMIT FUNCTION
         function changeEmail() {
 
-
             if ($("#profil #form_email_section #new_email").val() == $("#profil #form_email_section #email").val()) {
 
                 $('#profil').after(alertMessageCustomInfo);
 
             } else {
-
 
                 let btn_changed_email = $('#form_email_section .btn_save_email');
 
@@ -1556,15 +1564,15 @@
                     },
                     'json'
                 )
-                    .fail(function (result, status) {
+                .fail(function (result, status) {
 
-                        $('#profil').prepend(alertError);
-                        $('.btn_spinner_loading').remove();
-                        btn_changed_email.attr('disabled', false);
+                    $('#profil').prepend(alertError);
+                    $('.btn_spinner_loading').remove();
+                    btn_changed_email.attr('disabled', false);
 
-                    })
-                    .done(function (result, status) {
-
+                })
+                .done(function (result, status) {
+                        $("#here").html(result)
                         $('#profil').prepend(alertSuccesDataSave);
                         $('.btn_spinner_loading').remove();
                         btn_changed_email.attr('disabled', false);
@@ -1585,8 +1593,67 @@
         }
     })
 
-    /*QUESTIONS FORM PAGE ABOUT*/
-    /* CONNECTION PAGE */
+    /* COMMANDS */
+
+    let commands_container = $('#commands')
+
+    commands_container.ready(function () {
+
+        commands_container.append(loadingSpan);
+
+        $.post(
+            url('user', 'Dashboard', 'getFullOrders'),
+            {},
+            'json'
+        )
+        .fail(function (result, status) {
+
+            $('#commands .btn_spinner_loading').remove();
+            commands_container.append(alertError);
+        })
+        .done(function (result, status) {
+
+
+            $('#commands .btn_spinner_loading').remove();
+
+            if(result !== 0) // if no data
+            {
+
+                let data = JSON.parse(result);
+
+                let htmlCompiled = Handlebars.compile($('#template_table_all_commands').html());
+                commands_container.append(htmlCompiled({
+                        data: data,
+                    })
+                );
+
+                $('#table_commands').DataTable( {
+                    "pageLength": 5,
+                    "lengthMenu": [ 5, 10, 15, 20],
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                    }
+                });
+
+
+            }else
+            {
+                commands_container.html(htmlNoOrdersCustomer);
+            }
+        })
+
+    })
+
+    function addCustomerEvent()
+    {
+        console.log(this);
+
+        /*$.post(
+            idEvent:
+        )*/
+
+        return false;
+    }
 
     <?php } ?>
 

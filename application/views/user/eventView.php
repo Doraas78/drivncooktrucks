@@ -35,7 +35,7 @@
         <!-- ROW -->
         <tr data-toggle="modal" id="{{this.id_event}}" data-target="#modal_details_event_{{this.id_event}}">
             <td class="text-justify">
-                <h1>{{this.name}}</h1>
+                <h1>{{this.truckName}}</h1>
                 <p>
                     {{this.description}}
                 </p>
@@ -60,7 +60,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{this.name}}</h5>
+                    <h5 class="modal-title">{{this.truckName}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -72,7 +72,7 @@
                             <div class="col"><img style="height: 150px; width: 150px" src="<?= img_url('event_1') ?>" alt=""></div>
                         </div>
                         <div class="row">
-                            <div class="col">{{this.name}}</div>
+                            <div class="col">{{this.eventName}}</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col">
                                 <p>
-                                    location + {{this.number_of_guest}}
+                                    {{ this.number }} {{ this.type_of_road }} {{ this.street }} {{ this.street }} {{ this.cityName }}
                                 </p>
                             </div>
                         </div>
@@ -102,6 +102,8 @@
                             </div>
                         </div>
                     </div>
+
+                        <span onclick="addCustomerEvent()" class="text-info">S'inscrire</span>
 
                 </div>
             </div>

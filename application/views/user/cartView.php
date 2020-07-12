@@ -33,6 +33,7 @@
                                     foreach ($valueMeal as $key => $meal) {
                                         $totalPrice += (int)$meal['current_quantity_meal'] * $meal['price'];
                                         $tva += (int)$meal['current_quantity_meal'] * $meal['tva'];
+
                                         ?>
 
                                         <tr>
@@ -58,7 +59,6 @@
                                         </tr>
 
                                     <?php }
-
                             }} ?>
 
 
@@ -138,6 +138,7 @@
                             }} ?>
 
                             <?php
+
                             if(isset($valueTruck['drink']) && count($valueTruck['drink']) > 0)
 
                                 foreach ($valueTruck['drink'] as $keyDrink => $valueDrink) {
@@ -148,7 +149,7 @@
                                     ?>
 
                                     <tr>
-                                        <td>Ingrédient</td>
+                                        <td>Boissons</td>
                                         <td class="flex-column"><?= $drink['name']?> <p class="font-weight-light" ><?= $drink['recipe']?></p></td>
                                         <td class="flex-column"><?= $drink['price']?> € <p class="font-weight-light" >Dont <?= $drink['tva']?> € de tva</p></td>
                                         <td>
@@ -171,7 +172,8 @@
 
                                 <?php }
 
-                            } ?>
+                            }
+                            ?>
 
                             </tbody>
                         </table>
@@ -191,17 +193,22 @@
                     <p id="totalPriceCart"><span id="totalPriceSpan"><?= $totalPrice ?></span>€ dont <span id="totalTvaSpan"><?= $tva ?></span> € de tva</p>
                 <?php } ?>
             </div>
-            <div class="d-flex flex-row">
-                <button type="button" class="btn btn-success w-50" data-toggle="modal" data-target="#payementModal">
+            <div class="d-flex flex-column">
+
+             <?php if( $existCart ) { ?>
+
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#payementModal">
                     Payer
                 </button>
-                <a href="<?= site_url('user', 'Orders', 'deleteCart') ?>" class="w-50">
+                <a href="<?= site_url('user', 'Orders', 'deleteCartRedirectView') ?>">
                     <button type="submit" class="btn btn-danger w-100">Supprimer panier</button>
                 </a>
+
             </div>
-            <div>
-                <button type="button" class="btn btn-secondary w-100 btn_save_cart">Sauvegarder le panier</button>
-            </div>
+               <!-- <div>
+                    <button type="button" class="btn btn-secondary w-100 btn_save_cart">Sauvegarder le panier</button>
+                </div>-->
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -238,3 +245,4 @@
 </div>
 
 <div id="here"></div>
+

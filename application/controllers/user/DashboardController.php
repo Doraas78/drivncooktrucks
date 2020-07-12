@@ -37,4 +37,33 @@ class DashboardController extends Controller
         redirect('user', 'Event', 'index');
     }
 
+
+    public function getFullOrdersAction()
+    {
+
+        $orderModel = new OrderModel();
+        $orders = $orderModel->getOrdersByCustomer($_SESSION['customer']['email']);
+
+        if($orders === null || count($orders) <= 0)
+            echo json_encode(0);
+        else{
+            $data = [];
+            foreach ($orders as $order )
+            {
+
+                $order['ingredient'] = $orderModel->getOrderIngredients($order['id']);
+                $order['meal'] = $orderModel->getOrderMeals($order['id']);
+                $order['menu'] = $orderModel->getOrderMenus($order['id']);
+                $order['drink'] = $orderModel->getOrderDrinks($order['id']);
+
+                array_push($data, $order);
+            }
+
+            if(count($data) <= 0)
+                echo json_encode(0);
+            else{
+                echo json_encode($data);
+            }
+        }
+    }
 }

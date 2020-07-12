@@ -5,12 +5,11 @@ class OrderModel extends Model
 {
     function __construct()
     {
-        define('WAIT', 1);
-        define('IN_PROGRESS', 2);
-        define('DONE', 3);
 
         parent::__construct('ORDER');
     }
+
+    /* INSERT */
 
     public function insertOrder(array $data){
 
@@ -95,6 +94,55 @@ class OrderModel extends Model
     }
 
 
+    /* GET */
+
+    public function getOrdersByCustomer(string $email){
+
+        $sql = 'SELECT * FROM `ORDER`
+                WHERE `ORDER`.`email_customer` = ?;';
+
+        return $this->query($sql, [$email]);
+    }
+
+    public function getOrderDrinks(int $idOrder){
+
+        $sql = 'SELECT * FROM ORDER_DRINK
+                INNER JOIN DRINK ON DRINK.id = ORDER_DRINK.id_drink
+                WHERE ORDER_DRINK.id_order = ?;';
+
+        return $this->query($sql, [$idOrder]);
+    }
+
+    public function getOrderIngredients(int $idOrder){
+
+        $sql = 'SELECT * FROM ORDER_INGREDIENT
+                INNER JOIN INGREDIENT ON INGREDIENT.id = ORDER_INGREDIENT.id_ingredient
+                WHERE ORDER_INGREDIENT.id_order = ?';
+
+        return $this->query($sql, [$idOrder]);
+    }
+
+    public function getOrderMeals(int $idOrder){
+
+        $sql = 'SELECT * FROM ORDER_MEAL
+                INNER JOIN MEAL ON MEAL.id = ORDER_MEAL.id_meal
+                WHERE ORDER_MEAL.id_order = ?';
+
+
+        return $this->query($sql, [$idOrder]);
+
+    }
+
+    public function getOrderMenus(int $idOrder){
+
+        $sql = 'SELECT * FROM ORDER_MENU
+                INNER JOIN MENU ON MENU.id = ORDER_MENU.id_menu
+                WHERE ORDER_MENU.id_order = ?';
+
+        return $this->query($sql, [$idOrder]);
+    }
+
+
     function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -113,3 +161,26 @@ class OrderModel extends Model
     }
 
 }
+
+
+/*
+ *
+ * SELECT * FROM `ORDER`
+WHERE `ORDER`.`email_customer` = 'massimo@gmail.com';
+
+SELECT * FROM ORDER_DRINK
+INNER JOIN DRINK ON DRINK.id = ORDER_DRINK.id_drink
+WHERE ORDER_DRINK.id_order = 22;
+
+SELECT * FROM ORDER_INGREDIENT
+INNER JOIN INGREDIENT ON INGREDIENT.id = ORDER_INGREDIENT.id_ingredient
+WHERE ORDER_INGREDIENT.id_order = 22;
+
+SELECT * FROM ORDER_MENU
+INNER JOIN MENU ON MENU.id = ORDER_MENU.id_menu
+WHERE ORDER_MENU.id_order = 22;
+
+SELECT * FROM ORDER_MEAL
+INNER JOIN MEAL ON MEAL.id = ORDER_MEAL.id_meal
+WHERE ORDER_MEAL.id_order = 22;
+ */

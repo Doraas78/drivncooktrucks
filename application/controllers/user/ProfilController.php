@@ -68,39 +68,31 @@ class ProfilController extends Controller
 
     public function changeEmailAction(){
 
-        /* if password well sent */
+        /* if email well sent */
         if(isset($_POST['new_email']))
         {
-            $customer = $this->getActualCustomerAction();
 
-            /* if customer doesn't exist */
-            if($customer === null)
+            $auth_service = new AuthService();
+            $checkEmail = $auth_service->emailExists($_POST['new_email']);
+
+            /* if initial email correct */
+            if($checkEmail === null)
             {
-                echo json_encode('isNull');
+                $data = array(
+                    'new_email' => $_POST['new_email'],
+                    'email' => $_SESSION['customer']['email']
+                );
 
-            }/* if customer exist */
-            else {
+                $customerModel = new CustomerModel();
+                $update = $customerModel->updateCustomerEmail($data);
 
-                $auth_service = new AuthService();
-                $checkEmail = $auth_service->emailExists($_POST['new_email']);
+                $customer = $customerModel->getCustomerFull($_POST['new_email']);
+                $_SESSION['customer'] = $customer;
 
-                /* if initial password correct */
-                if($checkEmail !== false)
-                {
-                    $data = array(
-                        'new_email' => $_POST['new_email'],
-                        'email' => $customer['email'],
-                    );
-
-                    $customerModel = new CustomerModel();
-                    $update = $customerModel->updateCustomerEmail($data);
-
-                    $customerModel = new CustomerModel();
-                    $customer = $customerModel->getCustomerFull($_POST['new_email']);
-                    $_SESSION['customer'] = $customer;
-
-                    echo json_encode($update);
-                }
+                echo json_encode($update);
+            }else
+            {
+                echo json_encode(0);
             }
         }
     }
