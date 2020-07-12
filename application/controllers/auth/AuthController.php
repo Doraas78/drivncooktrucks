@@ -44,7 +44,7 @@ class AuthController extends Controller
             } else {
 
                 $customer = new CustomerModel();
-                $customer = $customer->find('email', $data['email']);
+                $customer = $customer->find('email', $data['email'], true);
 
                 $_SESSION['customer'] = $customer;
                 $_SESSION['last_login_timestamp'] = time();
