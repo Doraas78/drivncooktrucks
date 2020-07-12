@@ -1435,7 +1435,7 @@
 
                         $('#table_event').DataTable( {
                             "pageLength": 5,
-                            "lengthMenu": [ 5, 10, 15, 20, 25, "Tous" ],
+                            "lengthMenu": [ 5, 10, 15, 20, 25],
                             "language": {
                                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                             }
