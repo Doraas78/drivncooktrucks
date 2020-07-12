@@ -24,7 +24,7 @@ if ( ! function_exists('full_url')){
 if ( ! function_exists('base_url')){
     function base_url() : string
     {
-        return  $_SERVER['REQUEST_SCHEME'] .'://'. $_SERVER['HTTP_HOST'] . '/projet_annuel/client_side_drivncooktrucks/';
+        return  $_SERVER['REQUEST_SCHEME'] .'://'. $_SERVER['HTTP_HOST'] . '/';
     }
 }
 
