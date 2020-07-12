@@ -125,7 +125,7 @@ include 'localization.php';
             <!-- ROW -->
             <tr data-toggle="modal" id="{{this.id_event}}" data-target="#modal_details_event_{{this.id_event}}">
                 <td class="text-justify">
-                    <h1>{{this.name}}</h1>
+                    <h1>{{this.name}} ({{ this.participation }} participation(s))</h1>
                     <p>
                         {{this.description}}
                     </p>

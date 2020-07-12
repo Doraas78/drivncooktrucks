@@ -58,6 +58,11 @@ class EventController extends Controller
         $organizations = new OrganizationModel();
         $data = $organizations->getValidOrganizations();
 
+        foreach ($data as $key => $event)
+        {
+            $data[$key]['participation'] = $organizations->countRegisterEvent($event['id_event'])['count'];
+        }
+
         $this->render_data($data);
     }
 
@@ -68,6 +73,7 @@ class EventController extends Controller
 
         $this->render_data($data);
     }
+
 
     public function getMyEventsActionAndValidAction()
     {

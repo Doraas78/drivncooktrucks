@@ -118,6 +118,7 @@ class EventModel extends Model
 
     }
 
+
     public function getLastEvent() : string
     {
         return $this->lastInsertId();

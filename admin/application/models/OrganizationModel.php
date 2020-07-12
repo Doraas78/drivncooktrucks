@@ -100,6 +100,13 @@ class OrganizationModel extends Model
         return $this->find($key, $value);
     }
 
+    public function countRegisterEvent(int $id)
+    {
+        $sql = 'SELECT COUNT(PARTICIPATION.email_customer) AS count FROM PARTICIPATION WHERE PARTICIPATION.id_event = ?';
+
+        return $this->query($sql, [$id], false, true);
+    }
+
 
 
 }
