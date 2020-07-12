@@ -470,14 +470,13 @@ $('#connection').ready(function () {
         $('#connection .btn_connection_form').after(loadingSpan); // load icon
         $('#connection .btn_connection_form').attr('disabled', true)
 
-
         $.post(
             url('auth', 'Auth', 'connection'),
             {
                 email: escapeHtml($('#connection #email').val()),
                 password: escapeHtml($('#connection #password').val()),
             },
-            ''
+            'json'
         )
         .fail(function (result, status) {
         })
@@ -708,7 +707,7 @@ $('#order_meal_list').ready(function () {
                     cart: cart,
                     id_truck: parseInt($('#order_meal_list .title_truck').attr('id'))
                 },
-                ''
+                'json'
             )
                 .fail(function (result, status) {
                     $('#order_meal_list .btn_spinner_loading').remove();
@@ -735,7 +734,7 @@ $('#order_menu_list').ready(function () {
     let order_menu_list = $('#order_menu_list');
     $('#order_menu_list .menus_table table tbody').prepend(loadingSpan); // load icon
 
-    $.get(
+    $.post(
         url('user', 'Orders', 'getTruckMenus'),
         {
             id: parseInt($('#order_menu_list table').attr('id'))
@@ -743,13 +742,17 @@ $('#order_menu_list').ready(function () {
         'json'
     )
         .fail(function (result, status) {
+            console.log('non')
+            $('#here').html(result);
+
             order_menu_list.prepend(alertError);
             $('#order_menu_list .btn_spinner_loading').remove();
-
         })
         .done(function (result, status) {
 
+            console.log('yes')
             let data = JSON.parse(result)
+            $('#here').html(result);
 
             if (data === 'isNull') {
 
@@ -1310,7 +1313,7 @@ $('#cart').ready(function () {
                         cart: cart,
                         id_truck: parseInt($('#cart .title_truck_th').attr('id'))
                     },
-                    ''
+                    'json'
                 )
                 .fail(function (result, status) {
 
@@ -1370,7 +1373,7 @@ $('#formPayementCard').ready(function(){
                 reduction: 0,
                 description: '',
             },
-            ''
+            'json'
         )
         .fail(function (result) {
             $('#here').html(result)
@@ -1483,7 +1486,7 @@ $('#profil').ready(function () {
                 password: $('#form_password_section #password').val(),
                 new_password: $('#form_password_section #new_password').val(),
             },
-            ''
+            'json'
         )
             .fail(function (result, status) {
                 $('#profil').prepend(alertError);
@@ -1551,7 +1554,7 @@ $('#profil').ready(function () {
                 {
                     new_email: $("#profil #form_email_section #new_email").val(),
                 },
-                ''
+                'json'
             )
                 .fail(function (result, status) {
 

@@ -21,8 +21,6 @@
 
 </div>
 
-
-
 <!-- TEMPLATE EVENT ROW-->
 <script type="text/template" id="template_truck_row">
 

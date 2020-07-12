@@ -62,7 +62,7 @@ class Framework
 
 
         /* check customer if exist  */
-        if(isset($_SESSION['customer']) && $_SESSION['customer']) {
+        if(isset($_SESSION['customer']) && $_SESSION['customer'] ) {
 
             /* check session timeout if exist */
             if(isset($_SESSION['last_login_timestamp']))

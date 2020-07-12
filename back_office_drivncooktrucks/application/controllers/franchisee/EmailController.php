@@ -10,25 +10,25 @@ class EmailController extends Controller
         $customerModel = new CustomerModel();
         $emails = $customerModel->getAllCustomersNewslettersAggreed();
 
+        var_dump($emails);
+
         if($emails !== null || !empty($emails) )
         {
-
             $emails = implode(",", $emails);
 
-            $to = $emails;
-            $subject = $_POST['subject'];
-            $message = $_POST['message'];
-            $headers = 'From: perldecoco@gmail.com' . "\r\n" .
-                'Reply-To: perldecoco@gmail.com' . "\r\n";
+            var_dump($emails);
 
-            if (mail($to, $subject, $message, $headers))
-            {
-                echo json_encode(1);
-            }
-            else
-            {
-                echo json_encode(0);
-            }
+            /*$recipient = $emails;
+            $subject = $_POST['subject'];
+            $content = $_POST['message'];
+            $mailheader = "From: Driv'N Cook Trucks " . $_SESSION['name'] . " <no-reply@drivncooktrucks.com> \r\n";
+
+            mail($recipient, $subject, $content, $mailheader) or die("Error!");*/
+            //echo json_encode(1);
+
+        }else{
+            echo json_encode(0);
+
         }
 
     }

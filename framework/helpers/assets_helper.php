@@ -15,6 +15,13 @@ if(! function_exists('js_url')) {
     }
 }
 
+if(! function_exists('php_url_js')) {
+    function php_url_js($nom)
+    {
+        return 'public/js/' . $nom . '.php';
+    }
+}
+
 if(! function_exists('img_url')) {
     function img_url($nom)
     {

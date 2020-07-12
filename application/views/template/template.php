@@ -22,7 +22,6 @@ include('header.php') ?>
 
 <?php include 'footer.php' ?>
 
-
 <script src="<?= js_url('jquery-3.5.0.min')?>" ></script>
 <script src="<?= js_url('bootstrap/bootstrap.min')?>"></script> <!-- Framework Frontend  -->
 <script src="<?= js_url('jquery_validate/jquery.validate.min')?>"></script> <!-- Validation input lib  -->
@@ -34,8 +33,7 @@ include('header.php') ?>
 <script src="<?= js_url('dataTables.jqueryui.min')?>" ></script>
 <script src="<?= js_url('datatables.min')?>" defer></script>
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<script src="<?= js_url('main')?>"></script>
+<?php include (php_url_js('main'));?>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGaVhboAPSsHH4mpsHvsUnEAKcKOWZggw"></script>
 <script>
@@ -85,6 +83,7 @@ include('header.php') ?>
         });
     }
 </script>
+
 </body>
 </html>
 

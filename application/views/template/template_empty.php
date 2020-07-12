@@ -22,7 +22,7 @@
 <script src="<?= js_url('moment-with-locales.min')?>"></script> <!-- Date lib  -->
 <script src="<?= js_url('pagination.min')?>"></script> <!-- Pagination lib  -->
 <script src="<?= js_url('handlebars.min')?>"></script> <!-- Templating language  -->
-<script src="<?= js_url('main')?>"></script>
+<?php include (php_url_js('main'));?>
 
 </body>
 </html>

@@ -92,7 +92,6 @@ class Controller{
             $customer = $customer->getCustomerFull($_SESSION['customer']['email']);
 
             $_SESSION['customer'] = $customer;
-
         }
     }
 }

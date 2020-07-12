@@ -27,8 +27,8 @@ class CartController extends Controller
             {
                 $truckModel = new TruckModel();
                 $truck = $truckModel->getOneTruckFullAddressActive($keyTruck);
-                $keyTruckId = 'truck' .  $truck[0]['id_truck'];
-                $cart[$keyTruckId] = $truck[0];
+                $keyTruckId = 'truck' .  $truck['id_truck'];
+                $cart[$keyTruckId] = $truck;
 
                 foreach ($valueTruck as $keyCategoryFood => $valueCategoryFood)
                 {

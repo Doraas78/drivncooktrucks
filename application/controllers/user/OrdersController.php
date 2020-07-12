@@ -127,7 +127,7 @@ class OrdersController extends Controller
     {
         $truckModel = new TruckModel();
         $temp = $truckModel->getOneTruckFullAddressActive($_GET['id']);
-        $this->data['truck'] = $temp[0];
+        $this->data['truck'] = $temp;
         $this->render('user.truckMenus', 'template_user', $this->data);
     }
 
@@ -135,7 +135,7 @@ class OrdersController extends Controller
     {
         $truckModel = new TruckModel();
         $temp = $truckModel->getOneTruckFullAddressActive($_GET['id']);
-        $this->data['truck'] = $temp[0];
+        $this->data['truck'] = $temp;
         $this->render('user.truckIngredients', 'template_user', $this->data);
     }
 
@@ -143,14 +143,15 @@ class OrdersController extends Controller
     {
         $truckModel = new TruckModel();
         $temp = $truckModel->getOneTruckFullAddressActive($_GET['id']);
-        $this->data['truck'] = $temp[0];
+        $this->data['truck'] = $temp;
         $this->render('user.truckDrinks', 'template_user', $this->data);
     }
+
 
     public function getTruckMealsAction()
     {
         $truckModel = new TruckModel();
-        $data['truck']['meals'] = $truckModel->getTrucksMeals($_GET['id']);
+        $data['truck']['meals'] = $truckModel->getTrucksMeals(intval($_GET['id']));
 
         echo json_encode($data);
     }
@@ -158,15 +159,14 @@ class OrdersController extends Controller
     public function getTruckMenusAction()
     {
         $truckModel = new TruckModel();
-        $data['truck']['menus'] = $truckModel->getTrucksMenus($_GET['id']);
-
+        $data['truck']['menus'] = $truckModel->getTrucksMenus(intval($_POST['id']));
         echo json_encode($data);
     }
 
     public function getTruckIngredientAction()
     {
         $truckModel = new TruckModel();
-        $data['truck']['ingredients'] = $truckModel->getTrucksIngredients($_GET['id']);
+        $data['truck']['ingredients'] = $truckModel->getTrucksIngredients(intval($_GET['id']));
 
         echo json_encode($data);
     }
@@ -174,7 +174,7 @@ class OrdersController extends Controller
     public function getTruckDrinksAction()
     {
         $truckModel = new TruckModel();
-        $data['truck']['drinks'] = $truckModel->getTrucksDrinks($_GET['id']);
+        $data['truck']['drinks'] = $truckModel->getTrucksDrinks(intval($_GET['id']));
 
         echo json_encode($data);
     }
