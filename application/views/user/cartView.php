@@ -25,43 +25,49 @@
                             </thead>
                             <tbody>
 
-                            <?php foreach ($valueTruck['meal'] as $keyMeal => $valueMeal) {
+                            <?php
+                            if(isset($valueTruck['meal']) && count($valueTruck['meal']) > 0){
 
-                                foreach ($valueMeal as $key => $meal) {
-                                    $totalPrice += (int)$meal['current_quantity_meal'] * $meal['price'];
-                                    $tva += (int)$meal['current_quantity_meal'] * $meal['tva'];
-                                    ?>
+                                foreach ($valueTruck['meal'] as $keyMeal => $valueMeal) {
 
-                                    <tr>
-                                        <td>Repas</td>
-                                        <td class="flex-column"><?= $meal['name']?> <p class="font-weight-light" ><?= $meal['recipe']?></p></td>
-                                        <td class="flex-column"><?= $meal['price']?> € <p class="font-weight-light" >Dont <?= $meal['tva']?> € de tva</p></td>
-                                        <td>
-                                            <div class="container_btn_add_remove_item d-flex flex-row">
-                                                <a class="nav-link p-0 add_meal id_quantity_meal_<?= $meal['id_meal']?>">
-                                                    <button class="btn btn_dark_blue" type="button" ><i class="fas fa-plus"></i></button>
-                                                </a>
-                                                <a class="nav-link p-0 remove_meal id_quantity_meal_<?= $meal['id_meal']?>" >
-                                                    <button class="btn btn_dark_blue" type="button" ><i class="fas fa-minus"></i></button>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-row align-self-end w-100">
-                                                <input max="<?= $meal['quantity_meal']?>" min="0" type="number" id="id_quantity_meal_<?= $meal['id_meal']?>" class="quantity_meal_order" disabled="" value="<?= (int)$meal['current_quantity_meal']?>">
-                                                <p class="font-weight-lighter text-danger d-none messsage_maximum_quantity_achieve ml-3">Vous avez atteint la quantité maximale</p>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    foreach ($valueMeal as $key => $meal) {
+                                        $totalPrice += (int)$meal['current_quantity_meal'] * $meal['price'];
+                                        $tva += (int)$meal['current_quantity_meal'] * $meal['tva'];
+                                        ?>
 
-                                <?php }
+                                        <tr>
+                                            <td>Repas</td>
+                                            <td class="flex-column"><?= $meal['name']?> <p class="font-weight-light" ><?= $meal['recipe']?></p></td>
+                                            <td class="flex-column"><?= $meal['price']?> € <p class="font-weight-light" >Dont <?= $meal['tva']?> € de tva</p></td>
+                                            <td>
+                                                <div class="container_btn_add_remove_item d-flex flex-row">
+                                                    <a class="nav-link p-0 add_meal id_quantity_meal_<?= $meal['id_meal']?>">
+                                                        <button class="btn btn_dark_blue" type="button" ><i class="fas fa-plus"></i></button>
+                                                    </a>
+                                                    <a class="nav-link p-0 remove_meal id_quantity_meal_<?= $meal['id_meal']?>" >
+                                                        <button class="btn btn_dark_blue" type="button" ><i class="fas fa-minus"></i></button>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-row align-self-end w-100">
+                                                    <input max="<?= $meal['quantity_meal']?>" min="0" type="number" id="id_quantity_meal_<?= $meal['id_meal']?>" class="quantity_meal_order" disabled="" value="<?= (int)$meal['current_quantity_meal']?>">
+                                                    <p class="font-weight-lighter text-danger d-none messsage_maximum_quantity_achieve ml-3">Vous avez atteint la quantité maximale</p>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                            } ?>
+                                    <?php }
+
+                            }} ?>
 
 
-                            <?php foreach ($valueTruck['menu'] as $keyMenu => $valueMenu) {
+                            <?php
+                            if(isset($valueTruck['menu']) && count($valueTruck['menu']) > 0){
 
-                                foreach ($valueMenu as $key => $menu) {
+                                foreach ($valueTruck['menu'] as $keyMenu => $valueMenu) {
+
+                                    foreach ($valueMenu as $key => $menu) {
                                     $totalPrice += (int)$menu['current_quantity_menu'] * $menu['price'];
                                     $tva += (int)$menu['current_quantity_menu'] * $menu['tva'];
 
@@ -91,11 +97,15 @@
 
                                 <?php }
 
-                            } ?>
+                            }} ?>
 
-                            <?php foreach ($valueTruck['ingredient'] as $keyIngredient => $valueIngredient) {
+                            <?php
 
-                                foreach ($valueIngredient as $key => $ingredient) {
+                            if(isset($valueTruck['ingredient']) && count($valueTruck['ingredient']) > 0){
+
+                                foreach ($valueTruck['ingredient'] as $keyIngredient => $valueIngredient) {
+
+                                    foreach ($valueIngredient as $key => $ingredient) {
                                     $totalPrice += (int)$ingredient['current_quantity_ingredient'] * $ingredient['price'];
                                     $tva += (int)$ingredient['current_quantity_ingredient'] * $ingredient['tva'];
 
@@ -125,11 +135,14 @@
 
                                 <?php }
 
-                            } ?>
+                            }} ?>
 
-                            <?php foreach ($valueTruck['drink'] as $keyDrink => $valueDrink) {
+                            <?php
+                            if(isset($valueTruck['drink']) && count($valueTruck['drink']) > 0)
 
-                                foreach ($valueDrink as $key => $drink) {
+                                foreach ($valueTruck['drink'] as $keyDrink => $valueDrink) {
+
+                                    foreach ($valueDrink as $key => $drink) {
                                     $totalPrice += (int)$drink['current_quantity_drink'] * $drink['price'];
                                     $tva += (int)$drink['current_quantity_drink'] * $drink['tva'];
                                     ?>

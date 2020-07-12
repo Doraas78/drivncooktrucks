@@ -27,8 +27,7 @@ class OrderModel extends Model
             'number' => $this->generateRandomString()
         );
 
-        var_dump($parameters);
-        $sql = 'INSERT INTO `ORDER` (id_franchisee,email_customer,name,date,status,tva,price, reduction, description, number)
+        $sql = 'INSERT INTO `ORDER` (id_franchisee,email_customer,`name`,`date`,`status`,tva,price, reduction, `description`, `number`)
             VALUES (:id_franchisee,:email_customer,:name,:date,:status,:tva,:price, :reduction, :description, :number)';
 
         return $this->insert($sql, $parameters);
@@ -75,6 +74,7 @@ class OrderModel extends Model
         $sql = 'INSERT INTO ORDER_MEAL
                     (id_order,id_meal,quantity_meal)
             VALUES (:id_order,:id_meal,:quantity_meal)';
+
 
         $this->insert($sql, $parameters);
     }

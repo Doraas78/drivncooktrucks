@@ -27,7 +27,7 @@ if ( ! function_exists('base_url')){
 
         $protocol=$_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
 
-        return  $protocol .'://'. $_SERVER['HTTP_HOST'] . '/projet_annuel/admin/';
+        return  $protocol .'://'. $_SERVER['HTTP_HOST'] . '/admin/';
     }
 }
 

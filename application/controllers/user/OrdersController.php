@@ -20,7 +20,6 @@ class OrdersController extends Controller
 
     public function insertFullOrderAction()
     {
-        var_dump($_SESSION['cart']);
 
         $cart = $_SESSION['cart'];
 
@@ -36,10 +35,8 @@ class OrdersController extends Controller
             'description'       => null
         );
         $order = $orderModel->insertOrder($parameters);
-        var_dump($order);
         $idOrder = $orderModel->getLastOrderInserted();
         $idOrder = $idOrder['id'];
-        var_dump($idOrder);
 
         if($order === true)
         {
@@ -55,10 +52,11 @@ class OrdersController extends Controller
                             foreach ($valueCategoryFood as $keyFood => $valueFood) {
 
                                 $parameters = array(
-                                    'id_order'        => $idOrder,
+                                     'id_order'        => $idOrder,
                                     'id_meal'      => $keyFood,
-                                    'quantity_meal'    => $valueFood,
+                                    'quantity_meal'    => $valueFood['quantity_meal'],
                                 );
+
                                 $orderModel->insertOrderMeal($parameters);
                             }
                             break;
@@ -70,7 +68,7 @@ class OrdersController extends Controller
                                 $parameters = array(
                                     'id_order'        => $idOrder,
                                     'id_menu'      => $keyFood,
-                                    'quantity_menu'    => $valueFood,
+                                    'quantity_menu'    => $valueFood['quantity_menu'],
                                 );
 
                                 $orderModel->insertOrderMenu($parameters);
@@ -83,7 +81,7 @@ class OrdersController extends Controller
                                 $parameters = array(
                                     'id_order'        => $idOrder,
                                     'id_ingredient'      => $keyFood,
-                                    'quantity_ingredient'    => $valueFood,
+                                    'quantity_ingredient'    => $valueFood['quantity_ingredient'],
                                 );
 
                                 $orderModel->insertOrderIngredient($parameters);
@@ -95,7 +93,7 @@ class OrdersController extends Controller
                                 $parameters = array(
                                     'id_order'        => $idOrder,
                                     'id_drink'      => $keyFood,
-                                    'quantity_drink'    => $valueFood,
+                                    'quantity_drink'    => $valueFood['quantity_drink'],
                                 );
 
                                 $orderModel->insertOrderDrink($parameters);
@@ -214,8 +212,6 @@ class OrdersController extends Controller
         $id_truck = $_POST['id_truck'];
         $cart = $_POST['cart'];
 
-        var_dump($_SESSION['cart']);
-        var_dump($_POST);
 
         if (is_array($_POST['item'])) {
 
@@ -234,7 +230,6 @@ class OrdersController extends Controller
                                 $_SESSION['cart'][$id_truck]['meal'][$value['id_meal']]['quantity_meal'] = $value['quantity_meal']; // change quantity of meal
                             }
                         }
-                        var_dump($_SESSION['cart'][$id_truck]);
 
                         break;
                     case 'menu':
@@ -251,7 +246,6 @@ class OrdersController extends Controller
                                 $_SESSION['cart'][$id_truck]['menu'][$value['id_menu']]['quantity_menu'] = $value['quantity_menu']; // change quantity of menu
                             }
                         }
-                        var_dump($_SESSION['cart'][$id_truck]);
 
                         break;
                     case 'ingredient':
@@ -268,7 +262,6 @@ class OrdersController extends Controller
                                 $_SESSION['cart'][$id_truck]['ingredient'][$value['id_ingredient']]['quantity_ingredient'] = $value['quantity_ingredient']; // change quantity of menu
                             }
                         }
-                        var_dump($_SESSION['cart'][$id_truck]);
                         break;
                     case 'drink':
 
@@ -284,7 +277,6 @@ class OrdersController extends Controller
                                 $_SESSION['cart'][$id_truck]['drink'][$value['id_drink']]['quantity_drink'] = $value['quantity_drink']; // change quantity of menu
                             }
                         }
-                        var_dump($_SESSION['cart'][$id_truck]);
                         break;
                     default:
                         break;
@@ -305,7 +297,6 @@ class OrdersController extends Controller
                             $_SESSION['cart'][$id_truck]['meal'][$value['id_meal']]['quantity_meal'] = $value['quantity_meal']; // change quantity of meal
                         }
                     }
-                    var_dump($_SESSION['cart'][$id_truck]);
 
                     break;
                 case 'menu':
@@ -322,7 +313,6 @@ class OrdersController extends Controller
                             $_SESSION['cart'][$id_truck]['menu'][$value['id_menu']]['quantity_menu'] = $value['quantity_menu']; // change quantity of menu
                         }
                     }
-                    var_dump($_SESSION['cart'][$id_truck]);
 
                     break;
                 case 'ingredient':
@@ -339,7 +329,6 @@ class OrdersController extends Controller
                             $_SESSION['cart'][$id_truck]['ingredient'][$value['id_ingredient']]['quantity_ingredient'] = $value['quantity_ingredient']; // change quantity of menu
                         }
                     }
-                    var_dump($_SESSION['cart'][$id_truck]);
                     break;
                 case 'drink':
 
@@ -355,7 +344,6 @@ class OrdersController extends Controller
                             $_SESSION['cart'][$id_truck]['drink'][$value['id_drink']]['quantity_drink'] = $value['quantity_drink']; // change quantity of menu
                         }
                     }
-                    var_dump($_SESSION['cart'][$id_truck]);
                     break;
                 default:
                     break;
