@@ -103,8 +103,19 @@
                         </div>
                     </div>
 
-                        <span onclick="addCustomerEvent()" class="text-info">S'inscrire</span>
+                     {{#if this.participation }}
 
+                    <a href="<?= site_url('user', 'Event', 'cancelEvent') ?>&event_id={{this.id_event}}">
+                        <span class="text-info">Se désinscrire</span>
+                    </a>
+
+                    {{else}}
+
+                    <a href="<?= site_url('user', 'Event', 'registerEvent') ?>&event_id={{this.id_event}}">
+                        <span class="text-info">S'inscrire</span>
+                    </a>
+
+                    {{/if}}
                 </div>
             </div>
         </div>

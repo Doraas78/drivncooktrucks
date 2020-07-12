@@ -21,15 +21,39 @@ class EventController extends Controller
         $organizations = new OrganizationModel();
         $data = $organizations->getValidOrganizations();
 
+        foreach ($data as $key => $event)
+        {
+
+            $participation = $organizations->getParticipationCustomer($_SESSION['customer']['email'], $event['id_event']);
+            $data[$key]['participation'] = $participation;
+        }
+
         $this->render_data($data);
     }
 
-    public function addCustomerEvent()
+    public function cancelEventAction()
     {
+        if(!isset($_GET['event_id']))
+        {
+            redirect('user', 'Event', 'index');
+        }
         $organizations = new OrganizationModel();
-        $data = $organizations->insertParticipationCustomerToEvent($_SESSION['customer']['email'], (int)$_POST[$idEvent]);
+        $organizations->dropParticipationCustomer($_SESSION['customer']['email'], (int)$_GET['event_id']);
+        redirect('user', 'Event', 'index');
 
-        var_dump($data);
+    }
+
+    public function registerEventAction()
+    {
+        if(!isset($_GET['event_id']))
+        {
+            redirect('user', 'Event', 'index');
+        }
+
+        $organizations = new OrganizationModel();
+        $data = $organizations->insertParticipationCustomerToEvent($_SESSION['customer']['email'], (int)$_GET['event_id']);
+        redirect('user', 'Event', 'index');
+
     }
 
 }

@@ -61,6 +61,25 @@ class OrganizationModel extends Model
         return $this->query($sql);
     }
 
+    public function getParticipationCustomer(string $email, int $idEvent)
+    {
+        $sql = 'SELECT * FROM PARTICIPATION
+                WHERE PARTICIPATION.email_customer = ? AND PARTICIPATION.id_event = ?';
+
+       return $this->query($sql, [$email, $idEvent], false, true);
+
+    }
+
+    public function dropParticipationCustomer(string $email, int $idEvent)
+    {
+        $sql = 'DELETE FROM PARTICIPATION
+                WHERE PARTICIPATION.email_customer = ? AND PARTICIPATION.id_event = ?';
+
+        return $this->query($sql, [$email, $idEvent], true);
+
+    }
+
+
     public function getInvalidOrganizations()
     {
         $sql = 'SELECT *
