@@ -25,9 +25,8 @@ class FranchiseeModel extends Model
 
     public function getFranchisees()
     {
-        $sql = 'SELECT ' . $this->getTable() . '.*, TRUCK.name 
-                FROM `FRANCHISEE`
-                LEFT JOIN TRUCK ON TRUCK.id = FRANCHISEE.id_truck';
+        $sql = 'SELECT * 
+                FROM FRANCHISEE';
 
         return $this->query($sql);
     }

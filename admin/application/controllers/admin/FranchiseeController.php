@@ -30,7 +30,6 @@ class FranchiseeController extends Controller
         $data = $franchiseeModel->getFranchisees();
 
         $this->render_data($data);
-
     }
 
     public function getAllCity()

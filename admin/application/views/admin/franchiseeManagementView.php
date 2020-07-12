@@ -26,7 +26,7 @@ include 'localization.php';
             <tr>
                 <th scope="col" class="info_title">#</th>
                 <th scope="col" class="info_title">
-                    Foodtruck (nom, type, n°)
+                    Foodtruck (nom, email, n°)
                 </th>
                 <th scope="col" class="info_title">
                     Date d'arrivée
@@ -51,7 +51,7 @@ include 'localization.php';
     <tr id="{{ this.id }}">
         <th scope="row">{{inc @key}}</th>
         <th scope="row" class="info infos_foodtruck">
-            <a href="<?= site_url('admin', 'Franchisee', 'franchiseeDetailsView')?>&id={{ this.id }}">{{ this.name }}</a>
+            <a href="<?= site_url('admin', 'Franchisee', 'franchiseeDetailsView')?>&id={{ this.id }}">{{ this.name }} | {{ this.phone }}  | {{ this.email }}</a>
         </th>
         <th scope="row" class="info infos_date">
             {{ this.creation_date }}
