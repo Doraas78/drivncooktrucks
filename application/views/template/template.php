@@ -41,7 +41,7 @@ include('header.php') ?>
     //ESGIs
     var center = new google.maps.LatLng(48.849517822265625, 2.388321876525879);
     var geocoder = new google.maps.Geocoder();
-    var infowindow = new google.maps.InfoWindow();
+    var mapPopup = new google.maps.InfoWindow();
     function init() {
         var mapOptions = {
             zoom: 13,
@@ -61,11 +61,10 @@ include('header.php') ?>
             result=JSON.parse(result);
             console.log(result);
             var i;
+            var marker;
+
             for(i=0; i<result.length; i++){
-                var content =   '<div class="infoWindow"><strong>'  + result[i].name + '</strong>'
-                    + '<br/>'   +'<i>'  + result[i].type_of_road + result[i].street + '<br>'
-                    + '<br/>'     + result[i].cityName + '</div>';
-                var marker = new google.maps.Marker({
+                marker = new google.maps.Marker({
                     position:
                         {
                             lat: result[i].gps_latitude, lng: result[i].gps_longitude
@@ -75,10 +74,16 @@ include('header.php') ?>
                     },
                     map: map
                 });
-                marker.addListener('click', function() {
-                    infowindow.setContent(content);
-                    infowindow.open(map,marker);
-                });
+                google.maps.event.addListener(marker, 'click', (function (marker, result) {
+                    return function () {
+                        var content =   '<div class="infoWindow"><strong>'  + result.name + '</strong>'
+                            + '<br/>'   +'<i>'  + result.type_of_road + result.street + '<br>'
+                            + '<br/>'     + result.cityName + '</div>';
+
+                        mapPopup.setContent(content);
+                        mapPopup.open(map, marker);
+                    }
+                })(marker, result[i]));
             }
         });
     }

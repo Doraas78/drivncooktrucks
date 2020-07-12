@@ -17,7 +17,7 @@ include  'localization.php'?>
         <div class="container-fluid px-0" id="containerFoodtruck" >
             <div class="row no-gutters" align="center">
 
-                <div  class="map-responsive no-gutters" id="map" style="height: 400px; width: 400px;" ></div>
+                <div  class="map-responsive" id="map" style="width: 100%; height: 100%"  ></div>
 
             </div>
         </div>
