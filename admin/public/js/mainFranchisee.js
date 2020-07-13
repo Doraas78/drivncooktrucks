@@ -254,7 +254,7 @@ $('#events').ready(function () {
 
                 $('#table_all_events').DataTable( {
                     "pageLength": 5,
-                    "lengthMenu": [ 5, 10, 15, 20, "Tous" ],
+                    "lengthMenu": [ 5, 10, 15, 20 ],
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                     }
@@ -299,7 +299,7 @@ $('#events').ready(function () {
 
                     $('#table_my_events_container').DataTable( {
                         "pageLength": 5,
-                        "lengthMenu": [ 5, 10, 15, 20, "Tous" ],
+                        "lengthMenu": [ 5, 10, 15, 20],
                         "language": {
                             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                         }
@@ -344,7 +344,7 @@ $('#events').ready(function () {
 
                 $('#table_events_to_validate').DataTable( {
                     "pageLength": 5,
-                    "lengthMenu": [ 5, 10, 15, 20, "Tous" ],
+                    "lengthMenu": [ 5, 10, 15, 20 ],
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                     }
@@ -576,7 +576,7 @@ $('#settings').ready(function () {
 
                 $('#table_commands').DataTable( {
                     "pageLength": 5,
-                    "lengthMenu": [ 5, 10, 15, 20, "Tous" ],
+                    "lengthMenu": [ 5, 10, 15, 20 ],
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                     }

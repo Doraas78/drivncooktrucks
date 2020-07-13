@@ -546,7 +546,7 @@ $('#events').ready(function () {
 
                 $('#table_all_events').DataTable( {
                     "pageLength": 5,
-                    "lengthMenu": [ 5, 10, 15, 20, "Tous" ],
+                    "lengthMenu": [ 5, 10, 15, 20],
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                     }
@@ -590,7 +590,7 @@ $('#events').ready(function () {
 
                     $('#invalid_events_table').DataTable( {
                         "pageLength": 5,
-                        "lengthMenu": [ 5, 10, 15, 20, "Tous" ],
+                        "lengthMenu": [ 5, 10, 15, 20 ],
                         "language": {
                             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                         }
@@ -880,7 +880,7 @@ $('#trucksManagement').ready(function () {
 
                 $('#table_all_trucks').DataTable( {
                     "pageLength": 10,
-                    "lengthMenu": [ 10, 20, 30, 40, 50, "Tous" ],
+                    "lengthMenu": [ 10, 20, 30, 40, 50 ],
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                     }
