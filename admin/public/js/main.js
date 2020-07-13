@@ -571,36 +571,36 @@ $('#events').ready(function () {
             {},
             'json',
         )
-            .done(function (result, status) {
-                $('#events #events_to_validate .btn_spinner_loading').remove();
+        .done(function (result, status) {
+            $('#events #events_to_validate .btn_spinner_loading').remove();
 
-                let data =JSON.parse(result)
+            let data = JSON.parse(result)
 
-                if(data.length <= 0)
-                {
-                    my_events_container.append(htmlNoEvents);
-                }
-                else{
+            if(data.length <= 0)
+            {
+                my_events_container.append(htmlNoEvents);
+            }
+            else{
 
-                    let htmlCompiled = Handlebars.compile($('#template_all_invalid_events_table').html());
-                    my_events_container.append(htmlCompiled({
-                            data: JSON.parse(result),
-                        })
-                    );
+                let htmlCompiled = Handlebars.compile($('#template_all_invalid_events_table').html());
+                my_events_container.append(htmlCompiled({
+                        data: JSON.parse(result),
+                    })
+                );
 
-                    $('#invalid_events_table').DataTable( {
-                        "pageLength": 5,
-                        "lengthMenu": [ 5, 10, 15, 20 ],
-                        "language": {
-                            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-                        }
-                    });
-                }
-            })
-            .fail(function (result, state) {
+                $('#invalid_events_table').DataTable( {
+                    "pageLength": 5,
+                    "lengthMenu": [ 5, 10, 15, 20 ],
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                    }
+                });
+            }
+        })
+        .fail(function (result, state) {
 
-                my_events_container.append(htmlProblemServer);
-            })
+            my_events_container.append(htmlProblemServer);
+        })
     })
 
 

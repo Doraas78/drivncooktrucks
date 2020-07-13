@@ -230,7 +230,6 @@ include 'localization.php';
                 <img style="height: 150px; width: 150px" src="<?= img_url('event_1') ?>" alt="">
             </td>
         </tr>
-
         {{/each}}
 
 
