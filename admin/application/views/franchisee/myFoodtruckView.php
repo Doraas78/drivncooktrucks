@@ -11,9 +11,6 @@ include 'localization.php';
                             <a class="nav-link active" href="#my_info" role="tab" aria-controls="my_info" aria-selected="true">Mes infos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="#my_foodtruck" role="tab" aria-controls="my_foodtruck" aria-selected="false">Mon Foodtruck</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="#commands" role="tab" aria-controls="commands" aria-selected="false">Les commandes</a>
                         </li>
                     </ul>
@@ -134,9 +131,6 @@ include 'localization.php';
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="tab-pane" id="my_foodtruck" role="tabpanel" aria-labelledby="my_foodtruck-tab">
                         </div>
 
                         <!-- COMMANDS -->

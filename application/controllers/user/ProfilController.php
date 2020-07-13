@@ -109,7 +109,7 @@ class ProfilController extends Controller
 
         $customerModel = new CustomerModel();
         $check = $customerModel->updateNewslettersCustomer(intval($newsletter), $_SESSION['customer']['email']);
-        
+
         redirect('user', 'Profil', 'index');
 
     }

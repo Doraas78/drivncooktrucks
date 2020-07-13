@@ -97,10 +97,6 @@ include 'localization.php';
                         <textarea class="form-control" id="description" rows="3" name="description"></textarea>
                     </div>
 
-                    <div class="form-group row d-flex justify-content-center" id="picture_container">
-                        <label for="picture" id="label_picture">Choisir une photo</label>
-                        <input type="file" class="form-control-file" id="picture" style="display: none" name="picture">
-                    </div>
                     <div class="modal-footer">
                         <button type="submit" id="submit_add_event" class="btn btn-primary">Ajouter</button>
                     </div>
@@ -109,7 +105,6 @@ include 'localization.php';
         </div>
     </div>
 </div>
-
 
 <!-- ALL EVENT -->
 <script type="text/template" id="template_all_events_table">
