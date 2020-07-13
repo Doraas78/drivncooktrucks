@@ -64,7 +64,7 @@
 
                         <!-- INFOS SECTION -->
 
-                        <form class="h-100 d-flex flex-column p-3" novalidate>
+                        <form class="h-100 d-flex flex-column p-3" id="form_infos_section" method="POST" action="<?= site_url('user', 'Profil', 'changeInfosCustomer') ?>">
                             <div class="form-row">
                                 <div class="form-group col">
                                     <input type="text" class="form-control" id="number" name="number" placeholder="N°" value="<?=$_SESSION['customer']['number'] ?>">

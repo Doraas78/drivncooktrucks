@@ -122,4 +122,12 @@ class CustomerModel extends Model
         return $this->lastInsertId();
     }
 
+    public function updateNewslettersCustomer(int $newsletter, string $email)
+    {
+        $sql = "UPDATE CUSTOMER SET newsletter= ? WHERE CUSTOMER.email = ?";
+
+        return $this->update($sql, [$newsletter, $email]);
+
+    }
+
 }

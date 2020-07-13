@@ -96,4 +96,21 @@ class ProfilController extends Controller
             }
         }
     }
+
+    public function changeInfosCustomerAction(){
+
+        if(isset($_POST['newsletter']))
+        {
+            $newsletter = 1;
+        }else
+        {
+            $newsletter = 0;
+        }
+
+        $customerModel = new CustomerModel();
+        $check = $customerModel->updateNewslettersCustomer(intval($newsletter), $_SESSION['customer']['email']);
+        
+        redirect('user', 'Profil', 'index');
+
+    }
 }
